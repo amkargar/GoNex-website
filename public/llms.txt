@@ -1,0 +1,26 @@
+# Gonex
+
+> A modular Go framework for typed HTTP APIs and explicit service boundaries.
+
+Development snapshot: main branch; no published release yet.
+
+## Documentation
+- [Introduction](https://amkargar.github.io/GoNex-website/docs/main/): Meet Gonex: a modular Go framework for typed HTTP APIs, explicit modules, optional persistence and gRPC.
+- [Quick start](https://amkargar.github.io/GoNex-website/docs/main/quick-start/): Run the Gonex basic example, inspect health and users endpoints, and build the CLI from source.
+- [Installation](https://amkargar.github.io/GoNex-website/docs/main/installation/): Install prerequisites, clone Gonex, build the CLI, and resolve an unpublished local framework checkout.
+- [Modules and lifecycle](https://amkargar.github.io/GoNex-website/docs/main/modules/): Register explicit Go modules, share business services, and manage resources through startup and graceful shutdown.
+- [HTTP and OpenAPI](https://amkargar.github.io/GoNex-website/docs/main/http/): Build typed HTTP endpoints with Gin adapters, request validation and OpenAPI 3.1 contracts in Gonex.
+- [CLI reference](https://amkargar.github.io/GoNex-website/docs/main/cli/): Reference Gonex commands for safe project scaffolding, modules, API versions, gRPC generation and database migrations.
+- [Architecture](https://amkargar.github.io/GoNex-website/docs/main/architecture/): Understand Gonex package boundaries, plain Go business services and HTTP, GORM and gRPC adapters.
+- [HTTP API versions](https://amkargar.github.io/GoNex-website/docs/main/versioning/): Keep version-specific HTTP adapters and contracts separate while sharing business behavior in Gonex.
+- [Databases and migrations](https://amkargar.github.io/GoNex-website/docs/main/database/): Use optional GORM adapters with SQLite or PostgreSQL and explicit, checksum-verified SQL migrations.
+- [gRPC and contracts](https://amkargar.github.io/GoNex-website/docs/main/grpc/): Configure optional Gonex gRPC servers and clients, versioned Protobuf contracts, deadlines, TLS and mTLS.
+- [Microservices](https://amkargar.github.io/GoNex-website/docs/main/microservices/): Create independent Go services and versioned shared contracts with explicit typed client boundaries.
+- [Operations and readiness](https://amkargar.github.io/GoNex-website/docs/main/operations/): Configure readiness, graceful shutdown, request metrics, resource ownership and trace propagation.
+- [Security configuration](https://amkargar.github.io/GoNex-website/docs/main/security/): Review Gonex request limits, authentication boundaries, CORS policy and secure transport configuration.
+- [Application API reference](https://amkargar.github.io/GoNex-website/docs/main/api-reference/): Reference Gonex construction, module registration, typed routing, lifecycle and resource APIs.
+- [Compatibility and upgrades](https://amkargar.github.io/GoNex-website/docs/main/upgrades/): Pin Gonex versions and review HTTP, Protobuf and generated-code compatibility before upgrading.
+- [Release policy](https://amkargar.github.io/GoNex-website/docs/main/release/): Understand the Gonex development snapshot, release process, verification requirements and current limits.
+
+## Source
+- https://github.com/amkargar/gonex

@@ -1,0 +1,134 @@
+[
+  {
+    "path": "/blog/explicit-boundaries/",
+    "title": "Why explicit boundaries matter in Go",
+    "description": "Modules, adapters, and a business core that does not depend on a transport.",
+    "type": "blog",
+    "order": 0,
+    "date": "2026-10-20",
+    "category": "Architecture",
+    "readingTime": 1
+  },
+  {
+    "path": "/blog/introducing-gonex/",
+    "title": "Meet Gonex: a little structure, a lot of Go",
+    "description": "A tour of the modular framework, its explicit boundaries, and the best place to begin.",
+    "type": "blog",
+    "order": 0,
+    "date": "2026-10-20",
+    "category": "Project notes",
+    "readingTime": 1
+  },
+  {
+    "path": "/docs/main/",
+    "title": "Introduction",
+    "description": "Meet Gonex: a modular Go framework for typed HTTP APIs, explicit modules, optional persistence and gRPC.",
+    "type": "docs",
+    "order": 0
+  },
+  {
+    "path": "/docs/main/quick-start/",
+    "title": "Quick start",
+    "description": "Run the Gonex basic example, inspect health and users endpoints, and build the CLI from source.",
+    "type": "docs",
+    "order": 1
+  },
+  {
+    "path": "/docs/main/installation/",
+    "title": "Installation",
+    "description": "Install prerequisites, clone Gonex, build the CLI, and resolve an unpublished local framework checkout.",
+    "type": "docs",
+    "order": 2
+  },
+  {
+    "path": "/docs/main/modules/",
+    "title": "Modules and lifecycle",
+    "description": "Register explicit Go modules, share business services, and manage resources through startup and graceful shutdown.",
+    "type": "docs",
+    "order": 3
+  },
+  {
+    "path": "/docs/main/http/",
+    "title": "HTTP and OpenAPI",
+    "description": "Build typed HTTP endpoints with Gin adapters, request validation and OpenAPI 3.1 contracts in Gonex.",
+    "type": "docs",
+    "order": 4
+  },
+  {
+    "path": "/docs/main/cli/",
+    "title": "CLI reference",
+    "description": "Reference Gonex commands for safe project scaffolding, modules, API versions, gRPC generation and database migrations.",
+    "type": "docs",
+    "order": 5
+  },
+  {
+    "path": "/docs/main/architecture/",
+    "title": "Architecture",
+    "description": "Understand Gonex package boundaries, plain Go business services and HTTP, GORM and gRPC adapters.",
+    "type": "docs",
+    "order": 6
+  },
+  {
+    "path": "/docs/main/versioning/",
+    "title": "HTTP API versions",
+    "description": "Keep version-specific HTTP adapters and contracts separate while sharing business behavior in Gonex.",
+    "type": "docs",
+    "order": 7
+  },
+  {
+    "path": "/docs/main/database/",
+    "title": "Databases and migrations",
+    "description": "Use optional GORM adapters with SQLite or PostgreSQL and explicit, checksum-verified SQL migrations.",
+    "type": "docs",
+    "order": 8
+  },
+  {
+    "path": "/docs/main/grpc/",
+    "title": "gRPC and contracts",
+    "description": "Configure optional Gonex gRPC servers and clients, versioned Protobuf contracts, deadlines, TLS and mTLS.",
+    "type": "docs",
+    "order": 9
+  },
+  {
+    "path": "/docs/main/microservices/",
+    "title": "Microservices",
+    "description": "Create independent Go services and versioned shared contracts with explicit typed client boundaries.",
+    "type": "docs",
+    "order": 10
+  },
+  {
+    "path": "/docs/main/operations/",
+    "title": "Operations and readiness",
+    "description": "Configure readiness, graceful shutdown, request metrics, resource ownership and trace propagation.",
+    "type": "docs",
+    "order": 11
+  },
+  {
+    "path": "/docs/main/security/",
+    "title": "Security configuration",
+    "description": "Review Gonex request limits, authentication boundaries, CORS policy and secure transport configuration.",
+    "type": "docs",
+    "order": 12
+  },
+  {
+    "path": "/docs/main/api-reference/",
+    "title": "Application API reference",
+    "description": "Reference Gonex construction, module registration, typed routing, lifecycle and resource APIs.",
+    "type": "docs",
+    "order": 13
+  },
+  {
+    "path": "/docs/main/upgrades/",
+    "title": "Compatibility and upgrades",
+    "description": "Pin Gonex versions and review HTTP, Protobuf and generated-code compatibility before upgrading.",
+    "type": "docs",
+    "order": 14
+  },
+  {
+    "path": "/docs/main/release/",
+    "title": "Release policy",
+    "description": "Understand the Gonex development snapshot, release process, verification requirements and current limits.",
+    "type": "docs",
+    "order": 15
+  }
+]

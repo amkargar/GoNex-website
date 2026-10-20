@@ -1,0 +1,28 @@
+{
+  "name": "gonex-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/sync-content.mjs && nuxt dev",
+    "build": "npm run generate",
+    "generate": "node scripts/sync-content.mjs && node scripts/seo-files.mjs && nuxt generate && node scripts/finalize-static.mjs && node scripts/verify-static.mjs",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "typecheck": "node scripts/sync-content.mjs && nuxt typecheck",
+    "verify": "node scripts/verify-static.mjs",
+    "sync-content": "node scripts/sync-content.mjs"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.0",
+    "@nuxt/content": "^3.0.0",
+    "@nuxt/ui": "^4.0.0",
+    "nuxt": "4.6.2",
+    "tailwindcss": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0",
+    "vue-tsc": "^3.0.0",
+    "yaml": "^2.8.2"
+  }
+}

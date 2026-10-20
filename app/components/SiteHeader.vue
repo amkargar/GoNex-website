@@ -1,0 +1,9 @@
+<script setup lang="ts">
+import { defaultVersion, github } from '#shared/versions'
+const { asset } = useSiteUrl()
+const mode = useColorMode()
+const mobile = ref(false)
+const route = useRoute()
+watch(() => route.path, () => mobile.value = false)
+</script>
+<template><header class="site-header"><div class="header-inner"><NuxtLink to="/" class="wordmark" aria-label="Gonex home"><img :src="asset('/brand/duck.webp')" width="34" height="34" alt="" /><span>go<span class="wordmark-nex">Nex</span><span class="brand-dot">.</span></span></NuxtLink><nav class="desktop-nav" aria-label="Main navigation"><NuxtLink :to="`/docs/${defaultVersion}/`" :class="{ active: route.path.startsWith('/docs') }">Documentation</NuxtLink><NuxtLink to="/blog/" :class="{ active: route.path.startsWith('/blog') }">Blog</NuxtLink><a :href="`${github}/issues`">Contribute <UIcon name="i-lucide-arrow-up-right" /></a></nav><div class="header-tools"><DocsSearch /><ClientOnly><UButton color="neutral" variant="ghost" :icon="mode.value === 'dark' ? 'i-lucide-sun' : 'i-lucide-moon'" :aria-label="mode.value === 'dark' ? 'Use light theme' : 'Use dark theme'" @click="mode.preference = mode.value === 'dark' ? 'light' : 'dark'" /><template #fallback><span class="theme-spacer" /></template></ClientOnly><UButton :href="github" color="neutral" variant="outline" icon="i-lucide-github" class="github-header">GitHub</UButton><UButton color="neutral" variant="ghost" :icon="mobile ? 'i-lucide-x' : 'i-lucide-menu'" :aria-expanded="mobile" aria-controls="mobile-nav" aria-label="Toggle navigation" class="mobile-menu" @click="mobile = !mobile" /></div></div><nav v-if="mobile" id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation"><NuxtLink :to="`/docs/${defaultVersion}/`">Documentation</NuxtLink><NuxtLink to="/blog/">Blog</NuxtLink><a :href="github">GitHub source code ↗</a></nav></header></template>

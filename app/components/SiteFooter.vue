@@ -1,0 +1,5 @@
+<script setup lang="ts">
+import { defaultVersion, github } from '#shared/versions'
+const { asset } = useSiteUrl()
+</script>
+<template><footer class="site-footer"><div class="footer-main"><div><NuxtLink to="/" class="wordmark">goNex<span class="brand-dot">.</span></NuxtLink><p>A little structure.<br>A lot of possibility.</p></div><div><span class="footer-label">BUILD</span><NuxtLink :to="`/docs/${defaultVersion}/quick-start/`">Get started</NuxtLink><NuxtLink :to="`/docs/${defaultVersion}/architecture/`">Architecture</NuxtLink><NuxtLink :to="`/docs/${defaultVersion}/cli/`">CLI reference</NuxtLink></div><div><span class="footer-label">EXPLORE</span><NuxtLink to="/blog/">Journal</NuxtLink><a :href="`${github}/issues`">Issues & ideas ↗</a><a :href="asset('/feed.xml')">RSS feed</a></div><div><span class="footer-label">OPEN SOURCE</span><a :href="github">Source code ↗</a><a :href="`${github}/blob/main/LICENSE`">BSD 3-Clause</a><a :href="`${github}/issues`">Contributing ↗</a></div></div><div class="footer-bottom"><span>Built for Go. Open by nature.</span><span>Created by <a href="https://github.com/amkargar">Amir Mohammad Kargar ↗</a></span></div></footer></template>

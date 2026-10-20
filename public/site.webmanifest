@@ -1,0 +1,24 @@
+{
+  "name": "Gonex — Modular Go Framework",
+  "short_name": "Gonex",
+  "description": "Typed APIs and explicit Go modules.",
+  "start_url": "/GoNex-website/",
+  "scope": "/GoNex-website/",
+  "display": "standalone",
+  "background_color": "#f9f9f3",
+  "theme_color": "#f7d34c",
+  "icons": [
+    {
+      "src": "/GoNex-website/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/GoNex-website/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
