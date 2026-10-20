@@ -1,5 +1,4 @@
-github.com/amkargar/gonex v0.0.0-20261020120312-8124ffe157a0 h1:2a+TWzda+nxKpwd3bzGJWUp2Xn2Q94skD5UbINip2Cs=
-github.com/amkargar/gonex v0.0.0-20261020120312-8124ffe157a0/go.mod h1:L7AOODqM/IuKxYDzzUNNm3vnu4HoixLUFFLdNvMxHr8=
+github.com/amkargar/gonex v0.0.0-20261020182542-3ca54b46cb42 h1:Dv79lBiZovT0MUk4tuaiDPlr/X9DFi1F4LmnRsWIs80=
 github.com/amkargar/gonex v0.0.0-20261020182542-3ca54b46cb42/go.mod h1:b9SgNnF57E4O3JltEgsr4OHkPdZTNdpXtiXG0eE45Kc=
 github.com/bufbuild/protocompile v0.14.1 h1:iA73zAf/fyljNjQKwYzUHD6AD4R8KMasmwa/FBatYVw=
 github.com/bufbuild/protocompile v0.14.1/go.mod h1:ppVdAIhbr2H8asPk6k4pY7t9zB1OU5DoEw9xY/FUi1c=
