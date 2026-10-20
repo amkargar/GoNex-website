@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   colorMode: { preference: 'light', fallback: 'light', classSuffix: '' },
   app: { baseURL, head: { htmlAttrs: { lang: 'en' }, meta: [{ name: 'color-scheme', content: 'light dark' }] } },
   runtimeConfig: { public: { siteUrl, indexing: process.env.PUBLIC_INDEXING === 'true' } },
-  content: { experimental: { sqliteConnector: 'native' }, build: { markdown: { highlight: { theme: { default: 'github-light', dark: 'github-dark' }, langs: ['go', 'sh', 'bash', 'html', 'css', 'vue', 'typescript', 'json', 'yaml', 'powershell', 'sql', 'proto', 'toml', 'diff'] } } } },
+  content: { experimental: { sqliteConnector: 'native' }, build: { markdown: { highlight: { theme: { default: 'light-plus', light: 'light-plus', dark: 'dark-plus' }, langs: ['go', 'sh', 'bash', 'html', 'css', 'vue', 'typescript', 'json', 'yaml', 'powershell', 'sql', 'proto', 'toml', 'diff'] } } } },
   nitro: { externals: { inline: [/shared\//] }, prerender: { crawlLinks: true, failOnError: true, routes: ['/', '/docs/', '/blog/', ...pages.map(p => p.path)] } },
   typescript: { strict: true }
 })
