@@ -1,9 +1,11 @@
 ---
 title: "Compatibility and upgrades"
 description: "Pin Gonex versions and review HTTP, Protobuf and generated-code compatibility before upgrading."
-order: 14
+order: 180
 version: "main"
 source: "upgrade.md"
+section: "build"
+group: "REFERENCE"
 ---
 
 ## Module version policy

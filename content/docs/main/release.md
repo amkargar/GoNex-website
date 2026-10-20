@@ -1,30 +1,24 @@
 ---
-title: "Release policy"
-description: "Understand the Gonex development snapshot, release process, verification requirements and current limits."
-order: 15
+title: "Release status"
+description: "Understand the current Gonex development snapshot, dependency pinning and support considerations for application developers."
+order: 190
 version: "main"
-source: "release.md"
+section: "build"
+group: "REFERENCE"
 ---
 
-## Current support status
+## Development snapshot
 
-This checkout is not a published release. Local Windows/amd64 verification is recorded in the phase reports. Linux/Windows Go 1.27.1 and latest 1.27 patch are configured CI targets; successful hosted runs are required before claiming that support matrix is verified. Other Go releases and operating systems are unverified. Release builds target Linux, Windows and macOS on amd64/arm64; cross-building alone does not prove runtime support.
+The reviewed framework source has no published release. These guides target a particular `main` commit and show how to pin it as a Go dependency. Do not assume a version mentioned by a generator default is available from a module proxy.
 
-## Release checklist
+## Choose a dependency deliberately
 
-Before a release:
+Use the [installation guide](/docs/main/installation/) to pin the reviewed commit. When release tags become available, select an actual published version and review its changelog, compatibility notes and verification record before upgrading.
 
-1. Run the test workflow on the release commit: formatting, module verification, tests/vet/build, generated projects, real SQLite, disposable PostgreSQL, Linux race detector, OpenAPI validation/compatibility and benchmark budgets.
-2. Run the contracts workflow: pinned official Buf lint/breaking, internal compatibility checks and reproducible official Protobuf generation with a clean generated diff.
-3. Review changelog, upgrade instructions, security defaults, examples and all public contract baselines. Baseline updates require review against the previous release, rather than bypassing compatibility checks.
-4. Resolve the public repository/module location, choose a semantic tag, and verify generated projects against the resolvable version without local replacements. Publish the independent contracts module under its own module tag when changed.
-5. Tag only the reviewed commit. The release workflow reruns reusable test/contracts gates, cross-builds the CLI with an embedded version and uploads checksummed artifacts. It does not publish a GitHub release or push tags.
-6. Inspect artifacts and hosted results before separately authorizing publication. Record the actual support matrix and release notes.
+## Verify your application environment
 
-## Maintenance and security reports
+The upstream release policy describes configured verification targets and outstanding checks; configured targets alone do not prove runtime support. Check your own operating system, database, TLS/proxy configuration and resource lifecycles. See [deployment](/docs/main/deployment/) and [security](/docs/main/security/).
 
-Only the latest published patch in the active release line is intended to receive fixes; there are no published supported releases yet. Security reports should use a private reporting channel established by the repository owner before publication; do not place credentials or exploit details in public issues. See [security configuration](/docs/main/security/).
+## Looking for the maintainer checklist?
 
-## Known limits and future scope
-
-Known limits: static service targets, cooperative cancellation, additive migrations without automatic rollback, conservative compatibility checks, no automatic business mapping, no distributed tracing exporter or streaming trace propagation. Brokers, an admin panel and advanced discovery remain future work.
+Framework CI gates, contracts-module releases, generated baselines and release preparation belong in **[Contribute to Gonex → Maintaining releases](/docs/main/contribute/releases/)**.

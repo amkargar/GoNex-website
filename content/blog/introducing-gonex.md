@@ -15,15 +15,16 @@ A module is the unit of composition. It declares routes, resources and readiness
 
 ## A useful first five minutes
 
-The repository includes a runnable users API. Clone the source and start it:
+Start in your own application module and add the reviewed framework snapshot:
 
 ```sh
-git clone https://github.com/amkargar/gonex.git
-cd gonex
-go run ./examples/basic
+mkdir my-site
+cd my-site
+go mod init example.com/my-site
+go get github.com/amkargar/gonex@670c8c5f427e
 ```
 
-In a second terminal, request `http://127.0.0.1:8080/users/1`. The example returns Ada's in-memory user record. No database is required for this first step.
+Copy the complete program from [Your first application](/docs/main/quick-start/), run it, and request `http://127.0.0.1:8080/api/hello`. No database is required. Continue to [Build a website](/docs/main/building-websites/) for HTML templates and CSS. Framework setup and tests are in the separate [contributor guides](/docs/main/contribute/).
 
 ## Add the pieces you need
 

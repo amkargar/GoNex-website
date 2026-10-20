@@ -1,9 +1,11 @@
 ---
 title: "HTTP and OpenAPI"
 description: "Build typed HTTP endpoints with Gin adapters, request validation and OpenAPI 3.1 contracts in Gonex."
-order: 4
+order: 90
 version: "main"
 source: "http-openapi.md"
+section: "build"
+group: "APPLICATION DESIGN"
 ---
 
 ## Register typed endpoints

@@ -1,9 +1,11 @@
 ---
 title: "Security configuration"
 description: "Review Gonex request limits, authentication boundaries, CORS policy and secure transport configuration."
-order: 12
+order: 160
 version: "main"
 source: "security.md"
+section: "build"
+group: "SHIP YOUR APP"
 ---
 
 ## Authentication and authorization

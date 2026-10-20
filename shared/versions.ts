@@ -3,3 +3,4 @@ export interface DocsVersion { id: string; label: string; short: string; release
 export const versions: DocsVersion[] = registry.versions
 export const defaultVersion = registry.defaultVersion
 export const github = registry.github
+export const websiteGithub = 'https://github.com/amkargar/GoNex-website'

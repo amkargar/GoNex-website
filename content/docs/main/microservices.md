@@ -1,14 +1,16 @@
 ---
 title: "Microservices"
 description: "Create independent Go services and versioned shared contracts with explicit typed client boundaries."
-order: 10
+order: 130
 version: "main"
 source: "microservices.md"
+section: "build"
+group: "APPLICATION DESIGN"
 ---
 
 ## Generate a workspace
 
-Build the CLI first. These commands require resolvable framework/contracts versions or explicit local development overrides; see [unpublished checkouts](/docs/main/quick-start/#use-an-unpublished-checkout). Each service resolves its own dependencies.
+Build the CLI first. These commands require resolvable framework/contracts versions or explicit local development overrides; see [unpublished checkouts](/docs/main/installation/#use-an-unpublished-checkout). Each service resolves its own dependencies.
 
 ```sh
 gonex new commerce --module example.com/acme/commerce --arch microservices

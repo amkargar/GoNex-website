@@ -1,9 +1,11 @@
 ---
 title: "HTTP API versions"
 description: "Keep version-specific HTTP adapters and contracts separate while sharing business behavior in Gonex."
-order: 7
+order: 100
 version: "main"
 source: "versioning.md"
+section: "build"
+group: "APPLICATION DESIGN"
 ---
 
 ## Add an HTTP version

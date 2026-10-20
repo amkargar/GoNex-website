@@ -1,9 +1,11 @@
 ---
 title: "Modules and lifecycle"
 description: "Register explicit Go modules, share business services, and manage resources through startup and graceful shutdown."
-order: 3
+order: 60
 version: "main"
 source: "modules.md"
+section: "build"
+group: "APPLICATION DESIGN"
 ---
 
 ## Register a module

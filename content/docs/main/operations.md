@@ -1,9 +1,11 @@
 ---
 title: "Operations and readiness"
 description: "Configure readiness, graceful shutdown, request metrics, resource ownership and trace propagation."
-order: 11
+order: 150
 version: "main"
 source: "operations.md"
+section: "build"
+group: "SHIP YOUR APP"
 ---
 
 ## Health and readiness

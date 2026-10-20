@@ -1,9 +1,11 @@
 ---
 title: "Databases and migrations"
 description: "Use optional GORM adapters with SQLite or PostgreSQL and explicit, checksum-verified SQL migrations."
-order: 8
+order: 110
 version: "main"
 source: "database-migrations.md"
+section: "build"
+group: "APPLICATION DESIGN"
 ---
 
 ## Configure a database resource

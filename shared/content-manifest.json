@@ -5,6 +5,7 @@
     "description": "Modules, adapters, and a business core that does not depend on a transport.",
     "type": "blog",
     "order": 0,
+    "file": "content/blog/explicit-boundaries.md",
     "date": "2026-10-20",
     "category": "Architecture",
     "readingTime": 1
@@ -15,120 +16,295 @@
     "description": "A tour of the modular framework, its explicit boundaries, and the best place to begin.",
     "type": "blog",
     "order": 0,
+    "file": "content/blog/introducing-gonex.md",
     "date": "2026-10-20",
     "category": "Project notes",
     "readingTime": 1
   },
   {
     "path": "/docs/main/",
-    "title": "Introduction",
-    "description": "Meet Gonex: a modular Go framework for typed HTTP APIs, explicit modules, optional persistence and gRPC.",
+    "title": "Build with Gonex",
+    "description": "Install Gonex in your own Go project and learn to build websites, typed APIs and application modules.",
     "type": "docs",
-    "order": 0
-  },
-  {
-    "path": "/docs/main/quick-start/",
-    "title": "Quick start",
-    "description": "Run the Gonex basic example, inspect health and users endpoints, and build the CLI from source.",
-    "type": "docs",
-    "order": 1
+    "order": 0,
+    "file": "content/docs/main/index.md",
+    "version": "main",
+    "section": "build",
+    "group": "GETTING STARTED"
   },
   {
     "path": "/docs/main/installation/",
-    "title": "Installation",
-    "description": "Install prerequisites, clone Gonex, build the CLI, and resolve an unpublished local framework checkout.",
+    "title": "Install the package",
+    "description": "Add Gonex as a dependency to a new or existing Go module without cloning or changing the framework source.",
     "type": "docs",
-    "order": 2
+    "order": 10,
+    "file": "content/docs/main/installation.md",
+    "version": "main",
+    "section": "build",
+    "group": "GETTING STARTED"
+  },
+  {
+    "path": "/docs/main/quick-start/",
+    "title": "Your first application",
+    "description": "Create your own Go module, import Gonex, register a typed HTTP endpoint and run a working application.",
+    "type": "docs",
+    "order": 20,
+    "file": "content/docs/main/quick-start.md",
+    "version": "main",
+    "section": "build",
+    "group": "GETTING STARTED"
+  },
+  {
+    "path": "/docs/main/building-websites/",
+    "title": "Build a website",
+    "description": "Build a complete Gonex website with server-rendered HTML templates, embedded CSS and a typed JSON API.",
+    "type": "docs",
+    "order": 30,
+    "file": "content/docs/main/building-websites.md",
+    "version": "main",
+    "section": "build",
+    "group": "WEBSITES & FRONTENDS"
+  },
+  {
+    "path": "/docs/main/frontend/",
+    "title": "Connect a frontend",
+    "description": "Use Gonex as the backend for a Nuxt, Vue, React or Flutter frontend, with clear API URLs and deployment boundaries.",
+    "type": "docs",
+    "order": 40,
+    "file": "content/docs/main/frontend.md",
+    "version": "main",
+    "section": "build",
+    "group": "WEBSITES & FRONTENDS"
+  },
+  {
+    "path": "/docs/main/architecture/",
+    "title": "Application architecture",
+    "description": "Structure a Gonex application around plain Go business services, explicit modules and optional HTTP, database and gRPC adapters.",
+    "type": "docs",
+    "order": 50,
+    "file": "content/docs/main/architecture.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
+  },
+  {
+    "path": "/docs/main/project-structure/",
+    "title": "Organize your project",
+    "description": "Organize a Gonex application into business modules, schemas.go HTTP adapters, configuration and a small executable.",
+    "type": "docs",
+    "order": 55,
+    "file": "content/docs/main/project-structure.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
   },
   {
     "path": "/docs/main/modules/",
     "title": "Modules and lifecycle",
     "description": "Register explicit Go modules, share business services, and manage resources through startup and graceful shutdown.",
     "type": "docs",
-    "order": 3
-  },
-  {
-    "path": "/docs/main/http/",
-    "title": "HTTP and OpenAPI",
-    "description": "Build typed HTTP endpoints with Gin adapters, request validation and OpenAPI 3.1 contracts in Gonex.",
-    "type": "docs",
-    "order": 4
+    "order": 60,
+    "file": "content/docs/main/modules.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
   },
   {
     "path": "/docs/main/cli/",
     "title": "CLI reference",
     "description": "Reference Gonex commands for safe project scaffolding, modules, API versions, gRPC generation and database migrations.",
     "type": "docs",
-    "order": 5
+    "order": 80,
+    "file": "content/docs/main/cli.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
   },
   {
-    "path": "/docs/main/architecture/",
-    "title": "Architecture",
-    "description": "Understand Gonex package boundaries, plain Go business services and HTTP, GORM and gRPC adapters.",
+    "path": "/docs/main/http/",
+    "title": "HTTP and OpenAPI",
+    "description": "Build typed HTTP endpoints with Gin adapters, request validation and OpenAPI 3.1 contracts in Gonex.",
     "type": "docs",
-    "order": 6
+    "order": 90,
+    "file": "content/docs/main/http.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
   },
   {
     "path": "/docs/main/versioning/",
     "title": "HTTP API versions",
     "description": "Keep version-specific HTTP adapters and contracts separate while sharing business behavior in Gonex.",
     "type": "docs",
-    "order": 7
+    "order": 100,
+    "file": "content/docs/main/versioning.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
   },
   {
     "path": "/docs/main/database/",
     "title": "Databases and migrations",
     "description": "Use optional GORM adapters with SQLite or PostgreSQL and explicit, checksum-verified SQL migrations.",
     "type": "docs",
-    "order": 8
+    "order": 110,
+    "file": "content/docs/main/database.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
   },
   {
     "path": "/docs/main/grpc/",
     "title": "gRPC and contracts",
     "description": "Configure optional Gonex gRPC servers and clients, versioned Protobuf contracts, deadlines, TLS and mTLS.",
     "type": "docs",
-    "order": 9
+    "order": 120,
+    "file": "content/docs/main/grpc.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
   },
   {
     "path": "/docs/main/microservices/",
     "title": "Microservices",
     "description": "Create independent Go services and versioned shared contracts with explicit typed client boundaries.",
     "type": "docs",
-    "order": 10
+    "order": 130,
+    "file": "content/docs/main/microservices.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
+  },
+  {
+    "path": "/docs/main/deployment/",
+    "title": "Deploy your application",
+    "description": "Build and host a Gonex-backed website or API as a Go service, with explicit configuration, readiness and frontend hosting.",
+    "type": "docs",
+    "order": 140,
+    "file": "content/docs/main/deployment.md",
+    "version": "main",
+    "section": "build",
+    "group": "SHIP YOUR APP"
   },
   {
     "path": "/docs/main/operations/",
     "title": "Operations and readiness",
     "description": "Configure readiness, graceful shutdown, request metrics, resource ownership and trace propagation.",
     "type": "docs",
-    "order": 11
+    "order": 150,
+    "file": "content/docs/main/operations.md",
+    "version": "main",
+    "section": "build",
+    "group": "SHIP YOUR APP"
   },
   {
     "path": "/docs/main/security/",
     "title": "Security configuration",
     "description": "Review Gonex request limits, authentication boundaries, CORS policy and secure transport configuration.",
     "type": "docs",
-    "order": 12
+    "order": 160,
+    "file": "content/docs/main/security.md",
+    "version": "main",
+    "section": "build",
+    "group": "SHIP YOUR APP"
   },
   {
     "path": "/docs/main/api-reference/",
     "title": "Application API reference",
     "description": "Reference Gonex construction, module registration, typed routing, lifecycle and resource APIs.",
     "type": "docs",
-    "order": 13
+    "order": 170,
+    "file": "content/docs/main/api-reference.md",
+    "version": "main",
+    "section": "build",
+    "group": "REFERENCE"
   },
   {
     "path": "/docs/main/upgrades/",
     "title": "Compatibility and upgrades",
     "description": "Pin Gonex versions and review HTTP, Protobuf and generated-code compatibility before upgrading.",
     "type": "docs",
-    "order": 14
+    "order": 180,
+    "file": "content/docs/main/upgrades.md",
+    "version": "main",
+    "section": "build",
+    "group": "REFERENCE"
   },
   {
     "path": "/docs/main/release/",
-    "title": "Release policy",
-    "description": "Understand the Gonex development snapshot, release process, verification requirements and current limits.",
+    "title": "Release status",
+    "description": "Understand the current Gonex development snapshot, dependency pinning and support considerations for application developers.",
     "type": "docs",
-    "order": 15
+    "order": 190,
+    "file": "content/docs/main/release.md",
+    "version": "main",
+    "section": "build",
+    "group": "REFERENCE"
+  },
+  {
+    "path": "/docs/main/contribute/",
+    "title": "Contribute to Gonex",
+    "description": "Set up the Gonex framework repository, understand its internals and contribute tested changes to the framework itself.",
+    "type": "docs",
+    "order": 0,
+    "file": "content/docs/main/contribute/index.md",
+    "version": "main",
+    "section": "contribute",
+    "group": "START CONTRIBUTING"
+  },
+  {
+    "path": "/docs/main/contribute/development-setup/",
+    "title": "Framework development setup",
+    "description": "Fork and clone Gonex, install its Go toolchain, run the source example and test local framework changes from another app.",
+    "type": "docs",
+    "order": 10,
+    "file": "content/docs/main/contribute/development-setup.md",
+    "version": "main",
+    "section": "contribute",
+    "group": "START CONTRIBUTING"
+  },
+  {
+    "path": "/docs/main/contribute/architecture/",
+    "title": "Framework internals",
+    "description": "Understand Gonex internals: application registration, transport contracts, adapters, package dependencies and generator ownership.",
+    "type": "docs",
+    "order": 20,
+    "file": "content/docs/main/contribute/architecture.md",
+    "version": "main",
+    "section": "contribute",
+    "group": "DEVELOP THE FRAMEWORK"
+  },
+  {
+    "path": "/docs/main/contribute/testing/",
+    "title": "Framework testing and verification",
+    "description": "Run Gonex formatting, unit, contract, integration, race and benchmark checks without confusing framework tests with application tests.",
+    "type": "docs",
+    "order": 30,
+    "file": "content/docs/main/contribute/testing.md",
+    "version": "main",
+    "section": "contribute",
+    "group": "DEVELOP THE FRAMEWORK"
+  },
+  {
+    "path": "/docs/main/contribute/pull-requests/",
+    "title": "Prepare a contribution",
+    "description": "Prepare focused Gonex framework pull requests with reproductions, relevant tests, compatible contracts and clear verification notes.",
+    "type": "docs",
+    "order": 40,
+    "file": "content/docs/main/contribute/pull-requests.md",
+    "version": "main",
+    "section": "contribute",
+    "group": "MAINTAIN"
+  },
+  {
+    "path": "/docs/main/contribute/releases/",
+    "title": "Maintaining releases",
+    "description": "Review the Gonex maintainer release checklist, compatibility gates, contracts modules and verification requirements.",
+    "type": "docs",
+    "order": 50,
+    "file": "content/docs/main/contribute/releases.md",
+    "version": "main",
+    "section": "contribute",
+    "group": "MAINTAIN"
   }
 ]

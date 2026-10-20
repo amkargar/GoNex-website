@@ -1,9 +1,11 @@
 ---
 title: "gRPC and contracts"
 description: "Configure optional Gonex gRPC servers and clients, versioned Protobuf contracts, deadlines, TLS and mTLS."
-order: 9
+order: 120
 version: "main"
 source: "grpc.md"
+section: "build"
+group: "APPLICATION DESIGN"
 ---
 
 ## Opt in to gRPC

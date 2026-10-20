@@ -1,66 +1,47 @@
 ---
-title: "Architecture"
-description: "Understand Gonex package boundaries, plain Go business services and HTTP, GORM and gRPC adapters."
-order: 6
+title: "Application architecture"
+description: "Structure a Gonex application around plain Go business services, explicit modules and optional HTTP, database and gRPC adapters."
+order: 50
 version: "main"
-source: "architecture.md"
+section: "build"
+group: "APPLICATION DESIGN"
 ---
 
-goNex uses explicit registration and ordinary Go composition. Its business core is independent of HTTP, RPC and persistence adapters.
+## Start small
 
+Your first application can fit in one `main.go`. As it grows, organize your own business modules; you do not need to edit the Gonex package. The [project structure guide](/docs/main/project-structure/) shows concrete file responsibilities.
 
-## Dependency direction
+## Compose modules explicitly
 
-Business services live in `modules/NAME/service.go` and use plain Go values plus small interfaces owned by the consumer. HTTP adapters own schemas and request mapping; GORM repositories and gRPC clients implement business interfaces at their boundaries. Services should not import Gin, GORM, gRPC, Protobuf or transport DTOs.
+A module implements `Register(*app.Registrar) error`. The executable constructs the application and registers its modules:
 
-```mermaid
-flowchart LR
-    HTTP[HTTP adapter] --> Service[Business service]
-    RPC[gRPC server adapter] --> Service
-    Service --> Port[Local dependency interface]
-    Database[GORM repository] -. implements .-> Port
-    Client[gRPC client adapter] -. implements .-> Port
+```go
+a, err := gonex.New(config.Config{})
+if err != nil { return err }
+if err = a.Register(users.Module{}, catalog.Module{}); err != nil { return err }
+return a.Run(ctx)
 ```
 
-## Registration and lifecycle
+This excerpt assumes your application defines the two module types and has an existing context. See the [complete quick-start program](/docs/main/quick-start/) for a runnable single-module example.
 
-A module receives registration capabilities, never ownership of a listener. Registration is explicit, ordered and atomic per App.Register call. The application owns listeners and managed resources. Startup failures close started resources; shutdown drains HTTP and closes resources in reverse order. Stopped applications cannot restart.
+## Keep business rules in your service
 
-Dependencies register before consumers. Context-aware resource lifecycles make background work and cleanup explicit. See [modules and lifecycle](/docs/main/modules/).
+Your HTTP handler translates requests into service calls. Your service accepts ordinary Go values and depends on small local interfaces. GORM and gRPC implementations sit behind those interfaces when needed.
 
-## HTTP and RPC boundaries
+| Layer in your application | Owns |
+| --- | --- |
+| Service | Business rules and consumer-owned dependency interfaces |
+| HTTP adapter | Request/response `schemas.go`, validation and status mapping |
+| Database adapter | GORM models, queries and persistence mapping |
+| gRPC adapter | Versioned Protobuf mapping and remote calls |
+| Executable/module registration | Construction, configuration and resource composition |
 
-HTTP is unversioned by default. OpenAPI projects the registered typed endpoints. Independent versioned HTTP adapters can share one core service; legacy routes remain unless replacement is explicit.
+Use a modular monolith first when that fits your application. Independent services and gRPC are optional; there is no requirement to adopt them for a website or HTTP API.
 
-gRPC is opt-in and has no default listener. Protobuf packages and Go paths carry their API major. Contracts use a separate Go module so services can depend on a shared wire contract without importing each other's business code.
+## Let the application own resources
 
-## Generator ownership
+Managed resources expose `Start(context.Context) error` and `Close(context.Context) error`. Register dependencies before consumers and honor cancellation. Gonex starts them in registration order and closes them in reverse during shutdown. See [modules and lifecycle](/docs/main/modules/) and [operations](/docs/main/operations/).
 
-Generators own marked registries and record hashes in `.gonex.json`. They plan and validate writes first, reject handwritten destination collisions and support dry runs. Runtime composition does not scan source or depend on a dependency-injection container.
+## Framework internals are a separate path
 
-Independent services have their own Go modules, configuration and migrations. A local go.work file is a development convenience; production dependencies must resolve independently.
-
-## Dependencies
-
-The framework is not dependency-free. The root go.mod declares **10 direct dependencies**; indirect dependencies are recorded separately in go.mod and go.sum. Optional integrations share the module dependency graph, but HTTP-only applications need not import or start database/RPC adapters.
-
-| Direct dependency | Responsibility |
-|---|---|
-| `github.com/gin-gonic/gin` | HTTP routing and middleware |
-| `github.com/go-playground/validator/v10` | Typed input validation |
-| `github.com/santhosh-tekuri/jsonschema/v6` | Offline OpenAPI schema validation |
-| `github.com/ncruces/go-sqlite3/gormlite` | CGO-free SQLite integration |
-| `gorm.io/driver/postgres` | PostgreSQL driver |
-| `gorm.io/gorm` | Optional persistence adapter |
-| `google.golang.org/grpc` | Optional RPC transport |
-| `google.golang.org/protobuf` | Protobuf runtime and generation support |
-| `github.com/bufbuild/protocompile` | Contract compilation tooling |
-| `golang.org/x/mod` | Go module validation and generator edits |
-
-The list above groups responsibilities; the actual source of truth is [go.mod](https://github.com/amkargar/gonex/blob/main/go.mod), including any separate module requirements. Check its first require block when updating the dependency badge.
-
-## Design decisions and limits
-
-Prefer small consumer-owned interfaces and explicit constructors over global registries. Keep validation and the exported contract coherent, rather than silently projecting unsupported DTO behavior. Keep migrations explicit and immutable.
-
-Service discovery is static, cancellation is cooperative and generators do not invent business mappings. See [API decisions](/docs/main/api-reference/), [upgrade policy](/docs/main/upgrades/) and [release scope](/docs/main/release/).
+If your goal is to change how Gonex itself registers routes, generates contracts or scaffolds code, use [Framework internals](/docs/main/contribute/architecture/). This main documentation describes how to build your own application with the public API.

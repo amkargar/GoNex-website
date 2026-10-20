@@ -38,9 +38,15 @@ Imported documentation is under the upstream BSD 3-Clause terms; see `UPSTREAM_L
 
 The two dated journal entries are newly authored introductory/architecture drafts, not release announcements or third-party endorsements. Review the copy before public launch.
 
+## Two documentation audiences
+
+The main **Build with Gonex** documentation lives at `/docs/<version>/`: adding the Go dependency, running an application, building HTML websites, connecting a frontend and deploying it. **Contribute to Gonex** lives at `/docs/<version>/contribute/`: framework setup, internals, tests, pull requests and maintenance.
+
+The section picker, scoped search, breadcrumbs and previous/next navigation keep these paths distinct while using the same version registry. Existing consumer guide URLs are retained. Complete source examples are in `examples/quick-start/` and `examples/website/`; each is intended for a separate consumer Go module.
+
 ## Edit content
 
-Markdown is under `content/docs/main/` and `content/blog/`. Nuxt Content renders full HTML during generation. Frontmatter requires unique `title` and `description`. Docs also have `order`, `source` (the upstream filename), and `version`. Blog posts have `date` (ISO string), `author`, `category` and `readingTime`.
+Markdown is under `content/docs/main/` and `content/blog/`. Nuxt Content renders full HTML during generation. Frontmatter requires unique `title` and `description`. Docs also have `order`, `version`, `section` (`build` or `contribute`) and `group` (sidebar heading). `source` is optional and points to an upstream reference filename when a guide is adapted from it. Blog posts have `date` (ISO string), `author`, `category` and `readingTime`.
 
 Every `dev`, `typecheck`, and `generate` command runs `scripts/sync-content.mjs` to rebuild the route manifest and local search index from Markdown. When adding a page during an already-running dev session, run `npm run sync-content` and restart the dev server so generated indexes update. Titles and body edits are then handled by Nuxt Content.
 
@@ -51,7 +57,7 @@ Keep readable slugs; order is a frontmatter value, not a filename prefix. Use `i
 1. Create `content/docs/<version>/`, starting with `index.md` and the relevant guides.
 2. Add that id and label to `shared/versions.json`; set its `released` state honestly.
 3. Change `defaultVersion` if the release should become the default.
-4. Update sidebar groups in `app/pages/docs/[...slug].vue` if new guide slugs are added.
+4. Assign each guide a `section`, sidebar `group` and `order`. Navigation is generated from these fields; do not maintain a second list of guide slugs.
 5. Run `npm run typecheck` and `npm run generate`.
 
 The selector preserves the current slug when it exists in the destination version, otherwise takes the reader to its index. Do not add an option before that content exists. Each version's pages are self-canonical and discoverable in the sitemap. HTTP API versions and documentation versions are independent.

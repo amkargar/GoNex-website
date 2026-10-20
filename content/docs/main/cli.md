@@ -1,10 +1,54 @@
 ---
 title: "CLI reference"
 description: "Reference Gonex commands for safe project scaffolding, modules, API versions, gRPC generation and database migrations."
-order: 5
+order: 80
 version: "main"
 source: "cli.md"
+section: "build"
+group: "APPLICATION DESIGN"
 ---
+
+The CLI is optional. You can [use the package directly](/docs/main/quick-start/) without scaffolding, or generate a modular application with the commands below.
+
+## Create a project with a resolvable version
+
+Install the CLI at the reviewed development commit:
+
+```sh
+go install github.com/amkargar/gonex/cmd/gonex@670c8c5f427e
+```
+
+The current generator defaults to an unpublished `v0.1.0`, so **pass a resolvable version explicitly**. In a POSIX shell, resolve the commit to Go's canonical pseudo-version and create the project:
+
+```sh
+GONEX_VERSION="$(go list -m -f '{{.Version}}' github.com/amkargar/gonex@670c8c5f427e)"
+gonex new shop --module example.com/acme/shop --framework-version "$GONEX_VERSION"
+cd shop
+gonex create module users
+go mod tidy
+gonex check
+gonex run
+```
+
+PowerShell equivalent for resolving the version and creating the project:
+
+```powershell
+$gonexVersion = go list -m -f '{{.Version}}' github.com/amkargar/gonex@670c8c5f427e
+gonex new shop --module example.com/acme/shop --framework-version $gonexVersion
+cd shop
+gonex create module users
+go mod tidy
+gonex check
+gonex run
+```
+
+Make sure the CLI binary is on PATH. `GET http://127.0.0.1:8080/users` returns `{"message":"users"}`. This is a **new consumer application**, not a framework source checkout.
+
+## Generator safety
+
+Inspect a generator command with `--dry-run` before applying it. Names precede flags. Handwritten files are preserved; do not bypass ownership/hash conflicts by deleting `.gonex.json`.
+
+
 
 The executable is named `gonex`; framework branding is goNex. Run commands from the generated project or workspace root. Positional names come before flags.
 
@@ -15,7 +59,7 @@ The executable is named `gonex`; framework branding is goNex. Run commands from 
 gonex new NAME --module IMPORT_PATH [--framework-version VERSION] [--arch monolith|microservices] [--dry-run]
 ```
 
-The architecture defaults to `monolith`; the framework version defaults to `v0.1.0`. The destination must not exist. Use a resolvable release version or the [explicit local checkout override](/docs/main/quick-start/#use-an-unpublished-checkout).
+The architecture defaults to `monolith`; the framework version defaults to `v0.1.0`. The destination must not exist. Pass the resolvable version selected below. Use the [local checkout override](/docs/main/installation/#use-an-unpublished-checkout) only when intentionally developing framework changes.
 
 ## Modules and services
 
@@ -84,8 +128,8 @@ gonex grpc check
 
 Run from a supported project/workspace, service or contracts root. Generation compiles and checks contracts, then invokes pinned official plugins and stages the resulting files. Dry runs omit plugins and writes. `check` compares descriptors to the stored baseline. Neither command substitutes for the release workflow's Buf gate; see [gRPC contracts](/docs/main/grpc/).
 
-## Generator safety
+## Generator ownership details
 
 Generators plan and validate paths and collisions before writes. They reject traversal, symlinks and handwritten-file overwrites, hash-check tool-owned registries and support dry runs. `.gonex.json` records ownership metadata; do not delete it to bypass a conflict.
 
-New projects use a staged rename. Existing projects use an exclusive lock, staging and rollback on ordinary application errors; multi-file updates are not power-loss atomic. After an interrupted process, inspect `.gonex.lock` and proposed changes before recovering. See [getting started](/docs/main/quick-start/#generator-safety).
+New projects use a staged rename. Existing projects use an exclusive lock, staging and rollback on ordinary application errors; multi-file updates are not power-loss atomic. After an interrupted process, inspect `.gonex.lock` and proposed changes before recovering. See [getting started](/docs/main/cli/#generator-safety).

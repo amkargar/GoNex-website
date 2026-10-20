@@ -1,12 +1,14 @@
 ---
 title: "Application API reference"
 description: "Reference Gonex construction, module registration, typed routing, lifecycle and resource APIs."
-order: 13
+order: 170
 version: "main"
 source: "api-decisions.md"
+section: "build"
+group: "REFERENCE"
 ---
 
-These decisions began as the phase 0 contract and now describe the implemented application API. Historical results remain in the [phase reports](/docs/main/#implementation-record).
+These decisions began as the phase 0 contract and now describe the implemented application API. Historical results remain in the [phase reports](https://github.com/amkargar/gonex/blob/main/docs/README.md#implementation-record).
 
 
 ## Module and toolchain

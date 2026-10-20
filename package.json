@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "node scripts/sync-content.mjs && nuxt dev",
     "build": "npm run generate",
-    "generate": "node scripts/sync-content.mjs && node scripts/seo-files.mjs && nuxt generate && node scripts/finalize-static.mjs && node scripts/verify-static.mjs",
+    "generate": "node scripts/sync-content.mjs && node scripts/verify-docs.mjs && node scripts/seo-files.mjs && nuxt generate && node scripts/finalize-static.mjs && node scripts/verify-static.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "typecheck": "node scripts/sync-content.mjs && nuxt typecheck",
     "verify": "node scripts/verify-static.mjs",
-    "sync-content": "node scripts/sync-content.mjs"
+    "sync-content": "node scripts/sync-content.mjs",
+    "verify:docs": "node scripts/sync-content.mjs && node scripts/verify-docs.mjs"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.0",

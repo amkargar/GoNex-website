@@ -5,22 +5,32 @@
 Development snapshot: main branch; no published release yet.
 
 ## Documentation
-- [Introduction](https://amkargar.github.io/GoNex-website/docs/main/): Meet Gonex: a modular Go framework for typed HTTP APIs, explicit modules, optional persistence and gRPC.
-- [Quick start](https://amkargar.github.io/GoNex-website/docs/main/quick-start/): Run the Gonex basic example, inspect health and users endpoints, and build the CLI from source.
-- [Installation](https://amkargar.github.io/GoNex-website/docs/main/installation/): Install prerequisites, clone Gonex, build the CLI, and resolve an unpublished local framework checkout.
+- [Build with Gonex](https://amkargar.github.io/GoNex-website/docs/main/): Install Gonex in your own Go project and learn to build websites, typed APIs and application modules.
+- [Install the package](https://amkargar.github.io/GoNex-website/docs/main/installation/): Add Gonex as a dependency to a new or existing Go module without cloning or changing the framework source.
+- [Your first application](https://amkargar.github.io/GoNex-website/docs/main/quick-start/): Create your own Go module, import Gonex, register a typed HTTP endpoint and run a working application.
+- [Build a website](https://amkargar.github.io/GoNex-website/docs/main/building-websites/): Build a complete Gonex website with server-rendered HTML templates, embedded CSS and a typed JSON API.
+- [Connect a frontend](https://amkargar.github.io/GoNex-website/docs/main/frontend/): Use Gonex as the backend for a Nuxt, Vue, React or Flutter frontend, with clear API URLs and deployment boundaries.
+- [Application architecture](https://amkargar.github.io/GoNex-website/docs/main/architecture/): Structure a Gonex application around plain Go business services, explicit modules and optional HTTP, database and gRPC adapters.
+- [Organize your project](https://amkargar.github.io/GoNex-website/docs/main/project-structure/): Organize a Gonex application into business modules, schemas.go HTTP adapters, configuration and a small executable.
 - [Modules and lifecycle](https://amkargar.github.io/GoNex-website/docs/main/modules/): Register explicit Go modules, share business services, and manage resources through startup and graceful shutdown.
-- [HTTP and OpenAPI](https://amkargar.github.io/GoNex-website/docs/main/http/): Build typed HTTP endpoints with Gin adapters, request validation and OpenAPI 3.1 contracts in Gonex.
 - [CLI reference](https://amkargar.github.io/GoNex-website/docs/main/cli/): Reference Gonex commands for safe project scaffolding, modules, API versions, gRPC generation and database migrations.
-- [Architecture](https://amkargar.github.io/GoNex-website/docs/main/architecture/): Understand Gonex package boundaries, plain Go business services and HTTP, GORM and gRPC adapters.
+- [HTTP and OpenAPI](https://amkargar.github.io/GoNex-website/docs/main/http/): Build typed HTTP endpoints with Gin adapters, request validation and OpenAPI 3.1 contracts in Gonex.
 - [HTTP API versions](https://amkargar.github.io/GoNex-website/docs/main/versioning/): Keep version-specific HTTP adapters and contracts separate while sharing business behavior in Gonex.
 - [Databases and migrations](https://amkargar.github.io/GoNex-website/docs/main/database/): Use optional GORM adapters with SQLite or PostgreSQL and explicit, checksum-verified SQL migrations.
 - [gRPC and contracts](https://amkargar.github.io/GoNex-website/docs/main/grpc/): Configure optional Gonex gRPC servers and clients, versioned Protobuf contracts, deadlines, TLS and mTLS.
 - [Microservices](https://amkargar.github.io/GoNex-website/docs/main/microservices/): Create independent Go services and versioned shared contracts with explicit typed client boundaries.
+- [Deploy your application](https://amkargar.github.io/GoNex-website/docs/main/deployment/): Build and host a Gonex-backed website or API as a Go service, with explicit configuration, readiness and frontend hosting.
 - [Operations and readiness](https://amkargar.github.io/GoNex-website/docs/main/operations/): Configure readiness, graceful shutdown, request metrics, resource ownership and trace propagation.
 - [Security configuration](https://amkargar.github.io/GoNex-website/docs/main/security/): Review Gonex request limits, authentication boundaries, CORS policy and secure transport configuration.
 - [Application API reference](https://amkargar.github.io/GoNex-website/docs/main/api-reference/): Reference Gonex construction, module registration, typed routing, lifecycle and resource APIs.
 - [Compatibility and upgrades](https://amkargar.github.io/GoNex-website/docs/main/upgrades/): Pin Gonex versions and review HTTP, Protobuf and generated-code compatibility before upgrading.
-- [Release policy](https://amkargar.github.io/GoNex-website/docs/main/release/): Understand the Gonex development snapshot, release process, verification requirements and current limits.
+- [Release status](https://amkargar.github.io/GoNex-website/docs/main/release/): Understand the current Gonex development snapshot, dependency pinning and support considerations for application developers.
+- [Contribute to Gonex](https://amkargar.github.io/GoNex-website/docs/main/contribute/): Set up the Gonex framework repository, understand its internals and contribute tested changes to the framework itself.
+- [Framework development setup](https://amkargar.github.io/GoNex-website/docs/main/contribute/development-setup/): Fork and clone Gonex, install its Go toolchain, run the source example and test local framework changes from another app.
+- [Framework internals](https://amkargar.github.io/GoNex-website/docs/main/contribute/architecture/): Understand Gonex internals: application registration, transport contracts, adapters, package dependencies and generator ownership.
+- [Framework testing and verification](https://amkargar.github.io/GoNex-website/docs/main/contribute/testing/): Run Gonex formatting, unit, contract, integration, race and benchmark checks without confusing framework tests with application tests.
+- [Prepare a contribution](https://amkargar.github.io/GoNex-website/docs/main/contribute/pull-requests/): Prepare focused Gonex framework pull requests with reproductions, relevant tests, compatible contracts and clear verification notes.
+- [Maintaining releases](https://amkargar.github.io/GoNex-website/docs/main/contribute/releases/): Review the Gonex maintainer release checklist, compatibility gates, contracts modules and verification requirements.
 
 ## Source
 - https://github.com/amkargar/gonex
