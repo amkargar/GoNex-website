@@ -34,6 +34,20 @@ The core library stays explicit: manual applications set `config.Config{Debug: t
 Environment variables are read by the generated app, not automatically by the
 library. A `.env.example` is a reference; Gonex does not automatically load it.
 
+## Existing applications
+
+Upgrading Gonex preserves handwritten configuration files. If your app was created
+before this feature, first update its Gonex dependency, then add the environment
+mapping to the `config.Config` value returned by your own `config.Load()`:
+
+```go
+Debug: os.Getenv("DEBUG") == "true",
+```
+
+This is a field inside the existing configuration literal. Keep the other fields
+and the existing `os` import. Restart the application after setting the environment
+variable.
+
 ## Welcome page
 
 With `DEBUG=true`, visiting `GET /` shows **Welcome to Gonex**, the Gonex duck,
