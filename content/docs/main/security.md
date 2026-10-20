@@ -26,7 +26,7 @@ The HTTP listener is plain HTTP intended for a configured TLS ingress or private
 
 ## Error and secret redaction
 
-Internal errors, panic payloads, readiness failures and database startup credentials are redacted at framework boundaries. Recovery does not dump request headers or panic values. Application logs, SQL logging, explicit public error messages and caller-supplied interceptors remain the application's responsibility. Trace identifiers are correlation data, never authentication credentials.
+With debug disabled, internal errors, panic payloads, readiness failures and database startup credentials are redacted at framework boundaries. JSON clients retain generic internal errors even in debug mode. Browser HTML diagnostics with `DEBUG=true` can display original errors and stacks; use `DEBUG=false` on public deployments and see [debug mode](/docs/main/debug/). Recovery does not dump request headers or panic values. Application logs, SQL logging, explicit public error messages and caller-supplied interceptors remain the application's responsibility. Trace identifiers are correlation data, never authentication credentials.
 
 ## Documentation and metrics exposure
 

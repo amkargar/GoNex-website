@@ -28,3 +28,5 @@ jobs:
       - run: go mod verify
       - run: go tool gonex check
       - run: go test -race ./...
+      - name: Verify dependency lock files
+        run: git diff --exit-code -- go.mod go.sum

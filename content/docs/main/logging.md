@@ -69,3 +69,13 @@ Import `github.com/amkargar/gonex/observability`. Pass the request context into 
 For a custom destination, construct a logger with `observability.NewLogger(observability.LogOptions{Output: writer, Format: "json", Level: "INFO"})` and pass it through `config.Config.Logger`. Keep asynchronous tasks' cancellation and log context deliberate.
 
 Lifecycle failures use safe startup_failed/resource_failed/shutdown_failed codes in default logs. Detailed causes are returned to the caller for deliberate private handling; do not log credential-bearing causes indiscriminately.
+
+
+## Read the server summary
+
+The development output groups the application name, local URL, actual listening
+address, OpenAPI URL, environment, framework version and debug flag. Request
+lines align method, route, status and elapsed milliseconds, while retaining
+correlation IDs. Production auto mode continues to use JSON.
+
+For the browser welcome page and detailed errors, see [DEBUG configuration](/docs/main/debug/).

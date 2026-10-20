@@ -10,7 +10,7 @@ group: "GETTING STARTED"
 ## Install the CLI
 
 ```sh
-go install github.com/amkargar/gonex/cmd/gonex@8124ffe157a0
+go install github.com/amkargar/gonex/cmd/gonex@3ca54b46cb42
 ```
 
 Use Go 1.27.2 and put Go's binary directory on PATH. See [installation](/docs/main/installation/) for details. This is a pinned development snapshot, not a stable release.
@@ -57,6 +57,26 @@ The module returns:
 ```
 
 The response header `X-Request-ID` matches the request's log correlation ID. Stop with Ctrl+C to drain requests and close resources.
+
+## See the development welcome page
+
+Enable debug mode in the process running your application:
+
+```sh
+DEBUG=true go tool gonex run
+```
+
+On PowerShell:
+
+```powershell
+$env:DEBUG = "true"
+go tool gonex run
+```
+
+Visit `http://127.0.0.1:8080/` for **Welcome to Gonex**, the duck mascot, website
+and documentation links. A matching application root route takes priority.
+Browser errors show diagnostics; JSON clients keep their API response format.
+Use `DEBUG=false` for public deployments. [Debug mode details](/docs/main/debug/).
 
 ## Know where to write code
 

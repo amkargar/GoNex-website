@@ -77,6 +77,17 @@
     "group": "APPLICATION DESIGN"
   },
   {
+    "path": "/docs/main/debug/",
+    "title": "Debug mode and development pages",
+    "description": "Use DEBUG=true for the Gonex duck welcome page and browser error diagnostics, while keeping JSON API contracts and production responses unchanged.",
+    "type": "docs",
+    "order": 45,
+    "file": "content/docs/main/debug.md",
+    "version": "main",
+    "section": "build",
+    "group": "GETTING STARTED"
+  },
+  {
     "path": "/docs/main/architecture/",
     "title": "Application architecture",
     "description": "Structure a Gonex application around plain Go business services, explicit modules and optional HTTP, database and gRPC adapters.",

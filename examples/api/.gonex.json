@@ -1,7 +1,7 @@
 {
   "format": 1,
   "module": "example.com/shop",
-  "frameworkVersion": "v0.0.0-20261020120312-8124ffe157a0",
+  "frameworkVersion": "v0.0.0-20261020182542-3ca54b46cb42",
   "modules": [
     {
       "name": "users",

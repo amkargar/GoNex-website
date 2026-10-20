@@ -7,7 +7,7 @@ section: "build"
 group: "GETTING STARTED"
 ---
 
-Gonex is an **API-first Go framework** with explicit modules, typed request/response schemas, validation and OpenAPI. Its development workflow is inspired by DRF: install the dependency, create your own application, add modules and implement APIs inside that application.
+Gonex is an **API-first Go framework** with explicit modules, typed request/response schemas, validation and OpenAPI. Install the dependency, create your own application, add modules and implement APIs inside that application.
 
 ## Start building
 
@@ -15,21 +15,22 @@ Gonex is an **API-first Go framework** with explicit modules, typed request/resp
 2. [Create a project, add a module and run it](/docs/main/quick-start/).
 3. [Build a REST API](/docs/main/building-api/) with create/list/get endpoints.
 4. [Understand the generated structure](/docs/main/project-structure/).
-5. [Configure server output and logs](/docs/main/logging/), then [deploy](/docs/main/deployment/).
+5. [Enable the welcome page and development errors](/docs/main/debug/).
+6. [Configure server output and logs](/docs/main/logging/), then [deploy](/docs/main/deployment/).
 
-A database, gRPC and HTTP versioning are optional. Frontends consume Gonex over HTTP; application HTML templates and CSS are outside the current framework workflow.
+A database, gRPC and HTTP versioning are optional. Frontends consume Gonex over HTTP; the built-in welcome and error pages are development diagnostics, while frontends remain separate applications.
 
 ## Familiar API responsibilities
 
 | Responsibility | Gonex file |
 | --- | --- |
-| Request/response schemas and validation, similar to serializers | `schemas.go` |
-| HTTP handlers, similar to views | `handlers.go` |
-| Endpoint registration, similar to routing | `routes.go` |
+| Request/response schemas and validation, DTOs and validation | `schemas.go` |
+| HTTP handlers, request-to-service mapping | `handlers.go` |
+| Endpoint registration, typed route declarations | `routes.go` |
 | Business behavior | `service.go` |
 | Feature composition | `module.go` |
 
-The comparison describes responsibilities, not identical APIs. Automatic ModelViewSets, ORM model-to-CRUD generation and a Django-style admin are not current features.
+The comparison describes responsibilities, not identical APIs. Automatic model-to-CRUD generation and an administration interface are not current features.
 
 ## Two documentation paths
 

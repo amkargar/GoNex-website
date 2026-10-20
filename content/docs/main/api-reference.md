@@ -27,7 +27,7 @@ The Go module is `github.com/amkargar/gonex`; the product name is goNex. The rep
 
 Route identity is the uppercase method plus full path. Duplicate and incompatible wildcard routes fail before serving. Runtime health/readiness and enabled document paths reject conflicting registrations.
 
-`http.Register` builds a typed endpoint contract. Request origins, supported validation constraints and schema projection are checked together. Contracts detach mutable metadata at registration. Raw Gin routes are not included in OpenAPI.
+`http.Routes` groups concise typed declarations such as `http.Get(path, handler).Name(operationID)`. Handler request and response types are inferred. The lower-level `http.Register` API remains available and builds the same typed endpoint contract. Request origins, supported validation constraints and schema projection are checked together. Contracts detach mutable metadata at registration. Raw Gin routes are not included in OpenAPI.
 
 HTTP versions are explicit adapter packages. gRPC remains optional, with versioned Protobuf packages and independently managed servers/clients. See [HTTP contracts](/docs/main/http/) and [gRPC](/docs/main/grpc/).
 

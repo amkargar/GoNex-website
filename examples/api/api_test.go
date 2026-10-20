@@ -8,6 +8,7 @@ import (
 	"strings"
 	"testing"
 
+	appconfig "example.com/shop/config"
 	"example.com/shop/modules"
 	"github.com/amkargar/gonex"
 	"github.com/amkargar/gonex/config"
@@ -61,6 +62,33 @@ func TestAPI(t *testing.T) {
 			if paths["/api/users"] == nil || paths["/api/users/{id}"] == nil {
 				t.Fatal(paths)
 			}
+		}
+	}
+}
+
+func TestDebugConfigurationAndWelcome(t *testing.T) {
+	for _, value := range []string{"true", "false", ""} {
+		t.Setenv("DEBUG", value)
+		settings := appconfig.Load()
+		settings.Logger = slog.New(slog.NewJSONHandler(io.Discard, nil))
+		a, err := gonex.New(settings)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err = a.Register(modules.All()...); err != nil {
+			t.Fatal(err)
+		}
+		handler, err := a.Handler()
+		if err != nil {
+			t.Fatal(err)
+		}
+		request := httptest.NewRequest("GET", "/", nil)
+		request.Header.Set("Accept", "text/html")
+		w := httptest.NewRecorder()
+		handler.ServeHTTP(w, request)
+		welcome := strings.Contains(w.Body.String(), "Welcome to Gonex")
+		if welcome != (value == "true") {
+			t.Fatal("DEBUG configuration mismatch", value, w.Code, w.Body.String())
 		}
 	}
 }
