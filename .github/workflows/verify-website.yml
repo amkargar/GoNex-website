@@ -1,0 +1,27 @@
+name: Verify website
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run generate
+        env:
+          SITE_URL: https://amkargar.github.io
+          NUXT_APP_BASE_URL: /GoNex-website/
+          PUBLIC_INDEXING: 'true'
+      - name: Verify generated AI prompt
+        run: |
+          test -s .output/public/ai/main.txt
+          grep -q 'transport.Endpoint' .output/public/ai/main.txt
+          grep -q 'MY APP REQUIREMENTS' .output/public/ai/main.txt
