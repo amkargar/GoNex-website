@@ -9,7 +9,7 @@ group: "START CONTRIBUTING"
 
 ## Fork and clone
 
-Install Go 1.27.1 and Git. Fork [amkargar/gonex](https://github.com/amkargar/gonex) in GitHub, then clone your fork (replace `YOUR-USER` with your username):
+Install Go 1.27.2 and Git. Fork [amkargar/gonex](https://github.com/amkargar/gonex) in GitHub, then clone your fork (replace `YOUR-USER` with your username):
 
 ```sh
 git clone https://github.com/YOUR-USER/gonex.git

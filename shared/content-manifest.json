@@ -198,6 +198,17 @@
     "group": "SHIP YOUR APP"
   },
   {
+    "path": "/docs/main/observability/",
+    "title": "Metrics and tracing",
+    "description": "Correlate Gonex request logs and unary RPC traces, collect bounded latency histograms and opt in to Prometheus metrics.",
+    "type": "docs",
+    "order": 147,
+    "file": "content/docs/main/observability.md",
+    "version": "main",
+    "section": "build",
+    "group": "SHIP YOUR APP"
+  },
+  {
     "path": "/docs/main/operations/",
     "title": "Operations and readiness",
     "description": "Configure readiness, graceful shutdown, request metrics, resource ownership and trace propagation.",
@@ -251,6 +262,17 @@
     "version": "main",
     "section": "build",
     "group": "REFERENCE"
+  },
+  {
+    "path": "/docs/main/production-readiness/",
+    "title": "Production readiness",
+    "description": "Review Gonex hardening, the standalone PostgreSQL API sample, verification evidence and the remaining production release gates.",
+    "type": "docs",
+    "order": 195,
+    "file": "content/docs/main/production-readiness.md",
+    "version": "main",
+    "section": "build",
+    "group": "SHIP YOUR APP"
   },
   {
     "path": "/docs/main/contribute/",

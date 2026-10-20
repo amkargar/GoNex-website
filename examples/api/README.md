@@ -1,6 +1,6 @@
 # Gonex users API
 
-This standalone consumer app was generated with `gonex new api --module example.com/shop` and `go tool gonex create module users --transport none`, then its handwritten users module was extended. Use Go 1.27.1.
+This standalone consumer app was generated with `gonex new api --module example.com/shop` and `go tool gonex create module users --transport none`, then its handwritten users module was extended. Use Go 1.27.2.
 
 ```sh
 go mod tidy

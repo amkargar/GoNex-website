@@ -9,10 +9,10 @@ group: "GETTING STARTED"
 
 ## Create a separate API project
 
-Use Go 1.27.1. Start in an empty parent directory, not inside the quick-start shop:
+Use Go 1.27.2. Start in an empty parent directory, not inside the quick-start shop:
 
 ```sh
-go install github.com/amkargar/gonex/cmd/gonex@645a2f082d7d
+go install github.com/amkargar/gonex/cmd/gonex@029a62093ad9
 gonex new api --module example.com/shop
 cd api
 go mod tidy

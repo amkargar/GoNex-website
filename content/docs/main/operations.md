@@ -22,7 +22,7 @@ The application emits lifecycle and request logs by default. See [Server output 
 
 ## Collect metrics
 
-`observability.NewMetrics()` is a managed resource. Counters track completed requests, errors, in-flight work and cumulative elapsed nanoseconds by fixed route/RPC name. Unknown HTTP URLs share an unmatched label; raw URLs, user IDs and secrets are excluded. `SnapshotContext` copies measurements for a caller-owned exporter. Call `SetReadiness(application.Ready)` to include dependency readiness; without that callback, readiness represents the metrics resource's lifecycle only. This is an in-process snapshot, without histograms, persistence or a Prometheus server.
+`observability.NewMetrics()` is a managed resource. Counters track completed requests, errors, in-flight work and cumulative elapsed nanoseconds by fixed route/RPC name. Unknown HTTP URLs share an unmatched label; raw URLs, user IDs and secrets are excluded. `SnapshotContext` copies measurements for a caller-owned exporter. Call `SetReadiness(application.Ready)` to include dependency readiness; without that callback, readiness represents the metrics resource's lifecycle only. Snapshots now include bounded cumulative duration histograms; opt-in Prometheus exporting and trace correlation are described in [Metrics and tracing](/docs/main/observability/). No external backend is required.
 
 ## Expose example metrics
 

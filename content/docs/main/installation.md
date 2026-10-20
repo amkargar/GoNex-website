@@ -9,12 +9,12 @@ group: "GETTING STARTED"
 
 ## Requirements
 
-Use **Go 1.27.1** and a configured Go module proxy or dependency cache. Gonex is installed into your own project; you do not clone the framework to build an API. There is no published release yet: these commands pin the reviewed development commit `645a2f082d7d`.
+Use **Go 1.27.2** and a configured Go module proxy or dependency cache. Gonex is installed into your own project; you do not clone the framework to build an API. There is no published release yet: these commands pin the reviewed development commit `029a62093ad9`.
 
 ## Install the bootstrap CLI
 
 ```sh
-go install github.com/amkargar/gonex/cmd/gonex@645a2f082d7d
+go install github.com/amkargar/gonex/cmd/gonex@029a62093ad9
 gonex --version
 ```
 
@@ -47,14 +47,16 @@ Continue with **`go tool gonex` inside the application**. Go selects the project
 From the existing module root:
 
 ```sh
-go get github.com/amkargar/gonex@645a2f082d7d
+go get github.com/amkargar/gonex@029a62093ad9
 ```
 
 Add your Gonex imports and explicit application/module composition, then run `go mod tidy`. Installing a dependency does not replace an existing HTTP server automatically. You can also track the CLI in an existing Go module:
 
 ```sh
-go get -tool github.com/amkargar/gonex/cmd/gonex@645a2f082d7d
+go get -tool github.com/amkargar/gonex/cmd/gonex@029a62093ad9
 ```
+
+The minimum Go patch and dependency versions include security fixes. Use the reviewed snapshot rather than an older development commit, and consult [production readiness](/docs/main/production-readiness/) for the current release decision.
 
 ## Check the selected dependency
 

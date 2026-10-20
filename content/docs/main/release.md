@@ -22,3 +22,7 @@ The upstream release policy describes configured verification targets and outsta
 ## Looking for the maintainer checklist?
 
 Framework CI gates, contracts-module releases, generated baselines and release preparation belong in **[Contribute to Gonex → Maintaining releases](/docs/main/contribute/releases/)**.
+
+## Production-readiness evidence
+
+Review the [hardening status and open release gates](/docs/main/production-readiness/). Technical implementation, a green CI run and an independently reviewed production release are separate milestones.

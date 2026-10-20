@@ -10,10 +10,10 @@ group: "GETTING STARTED"
 ## Install the CLI
 
 ```sh
-go install github.com/amkargar/gonex/cmd/gonex@645a2f082d7d
+go install github.com/amkargar/gonex/cmd/gonex@029a62093ad9
 ```
 
-Use Go 1.27.1 and put Go's binary directory on PATH. See [installation](/docs/main/installation/) for details. This is a pinned development snapshot, not a stable release.
+Use Go 1.27.2 and put Go's binary directory on PATH. See [installation](/docs/main/installation/) for details. This is a pinned development snapshot, not a stable release.
 
 ## Create your application
 
