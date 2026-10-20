@@ -82,3 +82,32 @@ html{scroll-behavior:smooth;scroll-padding-top:105px}body{margin:0;background:va
     flex: 1 1 0%;
   }
 }
+
+/* Keep long documentation navigation reachable without scrolling the article. */
+.docs-sidebar,
+.docs-toc {
+  box-sizing: border-box;
+  min-height: 0;
+  max-height: calc(100vh - 124px);
+  max-height: calc(100dvh - 124px);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+.docs-toc {
+  max-height: calc(100vh - 156px);
+  max-height: calc(100dvh - 156px);
+}
+.docs-sidebar:focus-visible,
+.docs-toc:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .docs-sidebar {
+    /* The expanded mobile menu gets its own touch/keyboard scroll area. */
+    max-height: 65vh;
+    max-height: 65dvh;
+  }
+}
