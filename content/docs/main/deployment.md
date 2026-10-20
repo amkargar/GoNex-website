@@ -20,7 +20,8 @@ From your application module:
 ```sh
 go mod tidy
 go test ./...
-go build -o shop .
+go tool gonex build --os linux --arch amd64
+# Output: dist/linux-amd64/shop
 ```
 
 Deploy the compiled API binary and its explicit runtime configuration. Frontend assets are built and hosted separately.
@@ -30,10 +31,10 @@ Deploy the compiled API binary and its explicit runtime configuration. Frontend 
 The tutorial programs read `HTTP_ADDRESS` and pass it to `config.Config`. For a platform that expects a listener on all interfaces, configure the address in the process environment before starting the application:
 
 ```sh
-GONEX_ENV=production HTTP_ADDRESS=0.0.0.0:8080 ./shop
+DEBUG=false GONEX_ENV=production HTTP_ADDRESS=0.0.0.0:8080 ./dist/linux-amd64/shop
 ```
 
-This is POSIX shell syntax. On PowerShell, set `$env:GONEX_ENV = 'production'` and `$env:HTTP_ADDRESS = '0.0.0.0:8080'`, then start `./shop.exe`. Bind only to interfaces appropriate for your deployment; use `127.0.0.1:8080` when a local reverse proxy should be the only entry point.
+This is POSIX shell syntax. On PowerShell, set `$env:GONEX_ENV = 'production'` and `$env:HTTP_ADDRESS = '0.0.0.0:8080'`, also set `$env:DEBUG = 'false'`, then start the Windows executable built for the server architecture. Bind only to interfaces appropriate for your deployment; use `127.0.0.1:8080` when a local reverse proxy should be the only entry point.
 
 Gonex does not automatically load `.env` files. Your executable or process manager owns environment/configuration loading. The default `config.Config{}` listener is loopback-only.
 
@@ -63,3 +64,8 @@ Run explicit migrations before starting the application. Set the database enviro
 ## Current release status
 
 The documentation snapshot has no published stable release. Source availability and successful local examples do not establish a production support guarantee. Review the [release status](/docs/main/release/) and verify your deployment environment.
+
+
+## Disable development pages
+
+Set `DEBUG=false` explicitly. Debug mode defaults off but can expose original errors and stack traces when enabled. It is independent of `GONEX_ENV`. The welcome page and embedded duck are unavailable when debug is off. See [debug mode](/docs/main/debug/).

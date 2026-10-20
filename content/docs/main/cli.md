@@ -19,7 +19,7 @@ gonex new NAME --module IMPORT_PATH [--framework-version VERSION] [--arch monoli
 
 The architecture defaults to `monolith`. The framework version defaults to the installed CLI’s resolved module version, including Go pseudo-versions. A CLI built locally must receive an explicit valid `--framework-version`. The destination must not exist.
 
-Install with `go install github.com/amkargar/gonex/cmd/gonex@8124ffe157a0` for this snapshot, or pin a reviewed commit/published tag. Generated apps include a tool directive: inside the app use `go tool gonex` for the commands below. Microservices workspaces also have a root tool module; run `go mod tidy` there after creation.
+Install with `go install github.com/amkargar/gonex/cmd/gonex@3ca54b46cb42` for this snapshot, or pin a reviewed commit/published tag. Generated apps include a tool directive: inside the app use `go tool gonex` for the commands below. Microservices workspaces also have a root tool module; run `go mod tidy` there after creation.
 
 ## Modules and services
 
@@ -53,13 +53,13 @@ Versioning defaults to `preserve` and `/api/vN`. `replace` stops registering leg
 
 ```sh
 gonex run [--service NAME]
-gonex build [--service NAME]
+gonex build [--os OS] [--arch ARCH] [--out FILE] [--service NAME]
 gonex check [--service NAME]
 gonex --help
 gonex --version
 ```
 
-`run` invokes the Go executable path for the project; the application displays its bound address and writes structured lifecycle/request logs. See [logging](/docs/main/logging/). `build` builds its packages; `check` runs tests, vet and build. Child command failures preserve their exit codes. A workspace command must identify a service when selection is ambiguous.
+`run` invokes the Go executable path for the project; the application displays its bound address and writes structured lifecycle/request logs. See [logging](/docs/main/logging/). `build` writes an application executable; `check` runs tests, vet and package compilation. Child command failures preserve their exit codes. A workspace command must identify a service when selection is ambiguous.
 
 ## OpenAPI
 
@@ -103,3 +103,38 @@ Upgrade updates the dependency/tool and .gonex.json version metadata. It preserv
 ## Local microservices workflow
 
 Follow [First microservice call](/docs/main/microservices-quickstart/) for explicit client profiles and wiring, dev/doctor and independently published contracts. Existing generated paths and TLS defaults are retained. [Compatibility](/docs/main/microservices-compatibility/) explains skeleton/example/raw profiles, version coexistence and generation checks.
+
+
+## Help for every command
+
+```sh
+gonex -h
+gonex build --help
+gonex create module -h
+gonex help create client
+```
+
+Help is grouped by task. Command-specific help lists only relevant options and
+works outside an application without generating files. Color is automatic on
+supported terminals and disabled for redirected output, `TERM=dumb` and
+`NO_COLOR`.
+
+## Build for an operating system and architecture
+
+```sh
+go tool gonex build --os windows --arch amd64
+go tool gonex build --os windows --arch arm64
+go tool gonex build --os linux --arch amd64
+go tool gonex build --os linux --arch arm64
+go tool gonex build --os linux --arch amd64 --out ./release/server
+```
+
+Gonex uses `go build -o <file> .` underneath. Target options map to `GOOS` and
+`GOARCH`, defaulting to environment values or the current machine. Supported
+pairs are checked against `go tool dist list`. The default executable is
+`dist/<os>-<arch>/<app>`, with `.exe` on Windows. Custom relative output paths
+resolve from the selected application/service root.
+
+Successful output shows the target and file path; a run command appears only for
+native targets. Cross-compilation can require a target C toolchain when a
+dependency uses CGO. Compiler diagnostics and failure exit codes remain visible.

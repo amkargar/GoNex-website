@@ -2,23 +2,18 @@
 import { github, defaultVersion } from '#shared/versions'
 const { asset, absolute } = useSiteUrl()
 const docs = `/docs/${defaultVersion}`
-const setup = 'go install github.com/amkargar/gonex/cmd/gonex@8124ffe157a0\ngonex new shop --module example.com/acme/shop\ncd shop\ngo mod tidy'
-const endpoint = `type helloResponse struct {
-    Message string \`json:"message"\`
-}
-
-func (helloModule) Register(r *app.Registrar) error {
-    return transport.Register(r,
-        transport.Endpoint[transport.NoBody, helloResponse]{
-            Method: "GET",
-            Path:   "/api/hello",
-            OperationID: "hello",
-            Status: 200,
-            Handler: func(context.Context,
-                transport.NoBody) (helloResponse, error) {
-                return helloResponse{Message: "Hello from Gonex"}, nil
-            },
-        })
+const setup = 'go install github.com/amkargar/gonex/cmd/gonex@3ca54b46cb42\ngonex new shop --module example.com/acme/shop\ncd shop\ngo mod tidy'
+const endpoint = `func Register(r transport.EndpointRegistrar,
+    actions Actions) error {
+    h := Handler{Actions: actions}
+    return transport.Routes(r,
+        transport.Post("/api/users", h.Create).
+            Name("createUser").
+            Errors(409),
+        transport.Get("/api/users/:id", h.Get).
+            Name("getUser").
+            Errors(404),
+    )
 }`
 usePageSeo({ title: 'Gonex — An API-first Go framework', description: 'Build typed HTTP APIs with Gonex: explicit Go modules, Gin routing, OpenAPI 3.1, optional GORM and gRPC. Explore the source and get started.', path: '/', schema: { '@type': 'SoftwareSourceCode', '@id': absolute('/') + '#framework', name: 'Gonex', description: 'A modular Go framework for typed HTTP APIs and explicit service boundaries.', codeRepository: github, programmingLanguage: 'Go', license: 'https://opensource.org/license/bsd-3-clause', author: { '@type': 'Person', name: 'Amir Mohammad Kargar', url: 'https://github.com/amkargar' }, url: absolute('/') } })
 useHead({ script: [{ key: 'website', type: 'application/ld+json', innerHTML: JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', '@id': absolute('/') + '#website', name: 'Gonex', url: absolute('/'), inLanguage: 'en' }) }] })
@@ -35,7 +30,7 @@ const { data: articles } = await useAsyncData('home-blog', () => queryCollection
   <section id="quick-start" class="section wrap quick-section"><div class="section-intro"><span class="eyebrow">FROM ZERO TO YOUR FIRST RESPONSE</span><h2>A small start.<br>A real application.</h2><p>Add Gonex to your own Go project. Generate a project, add modules, and build JSON APIs inside your own application.</p><NuxtLink :to="`${docs}/quick-start/`" class="text-link">The complete quick start <UIcon name="i-lucide-arrow-up-right" /></NuxtLink><div class="requirements"><UIcon name="i-lucide-info" /><span>Requires Go 1.27.2. The dependency pins a reviewed development commit; no release is assumed.</span></div></div><div class="quick-steps"><div class="step"><div class="step-number">1</div><div class="step-content"><h3>Create your API project.</h3><CodeBlock :code="setup" filename="Install and create" /></div></div><div class="step"><div class="step-number">2</div><div class="step-content"><h3>Write your app. Run it.</h3><p class="step-note">Add an HTTP module, then start the server. <NuxtLink :to="`${docs}/quick-start/`">Follow the quick start</NuxtLink>.</p><CodeBlock code="go tool gonex create module users
 go tool gonex run" filename="Your application" /></div></div><div class="step"><div class="step-number">3</div><div class="step-content"><h3>Call your API.</h3><CodeBlock code="curl http://127.0.0.1:8080/users" filename="In another terminal" /><div class="json-response"><span class="ok-badge">200 OK</span><code>{ "message": "users" }</code></div></div></div></div></section>
   <section class="section features-section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">STRUCTURE THAT EARNS ITS PLACE</span><h2>Make room for your code.</h2></div><p>The framework handles the connections.<br>You keep control of the application.</p></div><div class="feature-grid"><article v-for="feature in features" :key="feature.number" class="feature-card"><div class="feature-top"><UIcon :name="feature.icon" /><span>{{ feature.number }} /</span></div><h3>{{ feature.title }}</h3><p>{{ feature.text }}</p><NuxtLink :to="`${docs}/${feature.link}/`" class="text-link">{{ feature.label }} <UIcon name="i-lucide-arrow-up-right" /></NuxtLink></article></div></div></section>
-  <section class="section wrap code-section"><div class="example-panel"><div class="panel-kicker"><span class="status-dot" /> ONE MODULE. ONE TYPED ENDPOINT.</div><CodeBlock :code="endpoint" filename="hello.go · route excerpt" language="go" /><div class="example-caption">Typed endpoint registration excerpt. <NuxtLink :to="`${docs}/http/`">Read the HTTP guide ↗</NuxtLink></div></div><div class="section-intro"><span class="eyebrow">PLAIN GO AT THE CENTER</span><h2>Boundaries.<br>Without barriers.</h2><p>Keep your business logic independent. HTTP handlers, database models, and Protobuf messages translate at the edges.</p><ul class="check-list"><li><UIcon name="i-lucide-check" /> Explicit registration, no runtime source scanning</li><li><UIcon name="i-lucide-check" /> Request and response schemas in schemas.go</li><li><UIcon name="i-lucide-check" /> Managed startup and graceful shutdown</li></ul><UButton :to="`${docs}/architecture/`" color="neutral" variant="outline" trailing-icon="i-lucide-arrow-up-right">Explore the architecture</UButton></div></section>
+  <section class="section wrap code-section"><div class="example-panel"><div class="panel-kicker"><span class="status-dot" /> CLEAR ROUTES. TYPED HANDLERS.</div><CodeBlock :code="endpoint" filename="routes.go · route excerpt" language="go" /><div class="example-caption">Typed endpoint registration excerpt. <NuxtLink :to="`${docs}/http/`">Read the HTTP guide ↗</NuxtLink></div></div><div class="section-intro"><span class="eyebrow">PLAIN GO AT THE CENTER</span><h2>Boundaries.<br>Without barriers.</h2><p>Keep your business logic independent. HTTP handlers, database models, and Protobuf messages translate at the edges.</p><ul class="check-list"><li><UIcon name="i-lucide-check" /> Explicit registration, no runtime source scanning</li><li><UIcon name="i-lucide-check" /> Request and response schemas in schemas.go</li><li><UIcon name="i-lucide-check" /> Managed startup and graceful shutdown</li></ul><UButton :to="`${docs}/architecture/`" color="neutral" variant="outline" trailing-icon="i-lucide-arrow-up-right">Explore the architecture</UButton></div></section>
   <section class="section wrap journal-section"><div class="section-heading"><div><span class="eyebrow">THE GONEX JOURNAL</span><h2>Notes from the build.</h2></div><NuxtLink to="/blog/" class="text-link">All articles <UIcon name="i-lucide-arrow-up-right" /></NuxtLink></div><div class="article-grid"><NuxtLink v-for="article in articles?.slice(0, 2)" :key="article.path" :to="article.path + '/'" class="article-card"><div class="article-visual" :class="article.category === 'Architecture' ? 'architecture-visual' : 'intro-visual'"><template v-if="article.category === 'Architecture'"><span class="diagram-node">HTTP</span><span class="diagram-line" /><span class="diagram-node core">your service</span><span class="diagram-line" /><span class="diagram-node">gRPC</span></template><template v-else><img :src="asset('/brand/duck.webp')" width="155" height="143" loading="lazy" alt="" /><span>hello,<br><em>goNex.</em></span></template></div><div class="article-meta">{{ article.category }} <span>·</span> {{ article.readingTime }} min read</div><h3>{{ article.title }}</h3><p>{{ article.description }}</p><span class="text-link">Read the story <UIcon name="i-lucide-arrow-up-right" /></span></NuxtLink></div></section>
   <section class="wrap final-cta"><span class="eyebrow">YOUR NEXT IDEA STARTS HERE</span><h2>Go make it happen.</h2><p>Explore the docs. Read the source. Build something yours.</p><div class="hero-actions"><UButton :to="`${docs}/quick-start/`" color="primary" size="xl" trailing-icon="i-lucide-arrow-right">Get Started</UButton><UButton :href="github" color="neutral" variant="outline" size="xl" icon="i-lucide-github">Explore on GitHub</UButton></div></section>
 </template>

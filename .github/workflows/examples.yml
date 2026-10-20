@@ -25,6 +25,13 @@ jobs:
           go-version-file: examples/api/go.mod
           cache-dependency-path: examples/api/go.sum
       - run: go mod download
+      - name: Inspect dependency checksums
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import base64
+          print('GENERATED_FILE examples/api/go.sum ' + base64.b64encode(open('go.sum', 'rb').read()).decode())
+          PY
       - run: go mod verify
       - run: go tool gonex check
       - run: go test -race ./...

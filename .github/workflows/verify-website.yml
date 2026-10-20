@@ -23,5 +23,16 @@ jobs:
       - name: Verify generated AI prompt
         run: |
           test -s .output/public/ai/main.txt
-          grep -q 'transport.Endpoint' .output/public/ai/main.txt
+          grep -q 'transport.Routes' .output/public/ai/main.txt
           grep -q 'MY APP REQUIREMENTS' .output/public/ai/main.txt
+          grep -q 'DEBUG=false' .output/public/ai/main.txt
+          test -s .output/public/docs/main/debug/index.html
+      - name: Inspect generated metadata
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import subprocess, base64
+          for name in subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines():
+              print('GENERATED_FILE ' + name + ' ' + base64.b64encode(open(name, 'rb').read()).decode())
+          PY
+          git diff --exit-code

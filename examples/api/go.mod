@@ -3,7 +3,7 @@ module example.com/shop
 go 1.27.2
 
 require (
-	github.com/amkargar/gonex v0.0.0-20261020120312-8124ffe157a0
+	github.com/amkargar/gonex v0.0.0-20261020182542-3ca54b46cb42
 	github.com/gin-gonic/gin v1.12.0
 )
 
