@@ -43,6 +43,7 @@ const headings = current.body?.toc?.links || []
         <NuxtLink :to="`/docs/${version}/`" :class="{ chosen: section === 'build' }" :aria-current="section === 'build' ? 'true' : undefined"><UIcon name="i-lucide-boxes" /><span><strong>Build with Gonex</strong><small>Install, create & deploy your app</small></span></NuxtLink>
         <NuxtLink :to="`/docs/${version}/contribute/`" :class="{ chosen: section === 'contribute' }" :aria-current="section === 'contribute' ? 'true' : undefined"><UIcon name="i-lucide-file-code" /><span><strong>Contribute to Gonex</strong><small>Develop the framework itself</small></span></NuxtLink>
       </nav>
+      <AiPromptCopy :version="version" />
       <nav :aria-label="sectionTitle"><div v-for="group in categories" :key="group" class="sidebar-group"><span>{{ group }}</span><template v-for="item in docs" :key="item.path"><NuxtLink v-if="item.group === group" :to="item.path" :class="{ selected: item.path === path + '/' }" :aria-current="item.path === path + '/' ? 'page' : undefined">{{ item.title }}</NuxtLink></template></div></nav>
       <a :href="github" class="sidebar-github"><UIcon name="i-lucide-github" /> View framework source <UIcon name="i-lucide-arrow-up-right" /></a>
     </aside>
