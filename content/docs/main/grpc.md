@@ -47,3 +47,7 @@ Unary and stream recovery returns redacted Internal errors. `grpc.ServerTLS` and
 ## Additional Buf checks
 
 Your contracts module includes buf.yaml and buf.gen.yaml for an external Buf workflow. Add Buf lint and compatibility checks to your application's CI when needed. Framework maintainers' pinned tool installer and release gates belong in [contributor testing](/docs/main/contribute/testing/).
+
+## Local microservices workflow
+
+Follow [First microservice call](/docs/main/microservices-quickstart/) for explicit client profiles and wiring, dev/doctor and independently published contracts. Existing generated paths and TLS defaults are retained. [Compatibility](/docs/main/microservices-compatibility/) explains skeleton/example/raw profiles, version coexistence and generation checks.

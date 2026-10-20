@@ -12,7 +12,7 @@ group: "GETTING STARTED"
 Use Go 1.27.2. Start in an empty parent directory, not inside the quick-start shop:
 
 ```sh
-go install github.com/amkargar/gonex/cmd/gonex@029a62093ad9
+go install github.com/amkargar/gonex/cmd/gonex@8124ffe157a0
 gonex new api --module example.com/shop
 cd api
 go mod tidy

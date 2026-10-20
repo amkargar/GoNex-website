@@ -45,3 +45,7 @@ Managed resources expose `Start(context.Context) error` and `Close(context.Conte
 ## Framework internals are a separate path
 
 If your goal is to change how Gonex itself registers routes, generates contracts or scaffolds code, use [Framework internals](/docs/main/contribute/architecture/). This main documentation describes how to build your own application with the public API.
+
+## Local microservices workflow
+
+Follow [First microservice call](/docs/main/microservices-quickstart/) for explicit client profiles and wiring, dev/doctor and independently published contracts. Existing generated paths and TLS defaults are retained. [Compatibility](/docs/main/microservices-compatibility/) explains skeleton/example/raw profiles, version coexistence and generation checks.

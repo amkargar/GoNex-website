@@ -167,10 +167,43 @@
   {
     "path": "/docs/main/microservices/",
     "title": "Microservices",
-    "description": "Create independent Go services and versioned shared contracts with explicit typed client boundaries.",
+    "description": "Develop independent Go services with explicit typed clients, local diagnostics and supervised processes.",
     "type": "docs",
     "order": 130,
     "file": "content/docs/main/microservices.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
+  },
+  {
+    "path": "/docs/main/microservices-quickstart/",
+    "title": "First microservice call",
+    "description": "Install Gonex, wire Orders to Identity explicitly and run local services with a single supervised command.",
+    "type": "docs",
+    "order": 131,
+    "file": "content/docs/main/microservices-quickstart.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
+  },
+  {
+    "path": "/docs/main/microservices-troubleshooting/",
+    "title": "Microservice diagnostics",
+    "description": "Resolve local ports, TLS, contract generation, unfinished mapping and supervised process failures.",
+    "type": "docs",
+    "order": 132,
+    "file": "content/docs/main/microservices-troubleshooting.md",
+    "version": "main",
+    "section": "build",
+    "group": "APPLICATION DESIGN"
+  },
+  {
+    "path": "/docs/main/microservices-compatibility/",
+    "title": "Microservice compatibility",
+    "description": "Understand catalog ownership, safe client generation, contract versions and independent Go module deployment.",
+    "type": "docs",
+    "order": 133,
+    "file": "content/docs/main/microservices-compatibility.md",
     "version": "main",
     "section": "build",
     "group": "APPLICATION DESIGN"

@@ -3,7 +3,7 @@ module example.com/shop
 go 1.27.2
 
 require (
-	github.com/amkargar/gonex v0.0.0-20261020083205-029a62093ad9
+	github.com/amkargar/gonex v0.0.0-20261020120312-8124ffe157a0
 	github.com/gin-gonic/gin v1.12.0
 )
 
@@ -50,7 +50,10 @@ require (
 	golang.org/x/sync v0.23.0 // indirect
 	golang.org/x/sys v0.48.0 // indirect
 	golang.org/x/text v0.42.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect
+	google.golang.org/grpc v1.83.2 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/driver/postgres v1.6.0 // indirect
 	gorm.io/gorm v1.31.1 // indirect
 )

@@ -19,7 +19,7 @@ gonex new NAME --module IMPORT_PATH [--framework-version VERSION] [--arch monoli
 
 The architecture defaults to `monolith`. The framework version defaults to the installed CLI’s resolved module version, including Go pseudo-versions. A CLI built locally must receive an explicit valid `--framework-version`. The destination must not exist.
 
-Install with `go install github.com/amkargar/gonex/cmd/gonex@029a62093ad9` for this snapshot, or pin a reviewed commit/published tag. Generated apps include a tool directive: inside the app use `go tool gonex` for the commands below. Microservices workspaces also have a root tool module; run `go mod tidy` there after creation.
+Install with `go install github.com/amkargar/gonex/cmd/gonex@8124ffe157a0` for this snapshot, or pin a reviewed commit/published tag. Generated apps include a tool directive: inside the app use `go tool gonex` for the commands below. Microservices workspaces also have a root tool module; run `go mod tidy` there after creation.
 
 ## Modules and services
 
@@ -99,3 +99,7 @@ New projects use a staged rename. Existing projects use an exclusive lock, stagi
 Select a reviewed target with `go get -tool github.com/amkargar/gonex/cmd/gonex@TARGET`. Resolve its canonical module version with `go list -m github.com/amkargar/gonex`, then run `go tool gonex upgrade --framework-version CANONICAL_VERSION --dry-run`. Review and apply without --dry-run, followed by go mod tidy, tests and contract comparisons.
 
 Upgrade updates the dependency/tool and .gonex.json version metadata. It preserves handwritten code and registries; it does not migrate application code or database schemas. Review the [readiness and release gates](/docs/main/production-readiness/) before promoting a candidate.
+
+## Local microservices workflow
+
+Follow [First microservice call](/docs/main/microservices-quickstart/) for explicit client profiles and wiring, dev/doctor and independently published contracts. Existing generated paths and TLS defaults are retained. [Compatibility](/docs/main/microservices-compatibility/) explains skeleton/example/raw profiles, version coexistence and generation checks.

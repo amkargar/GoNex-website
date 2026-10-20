@@ -65,3 +65,7 @@ go test ./...
 ```
 
 This helps reproduce behavior through public imports. Remove the replacement and resolve a real dependency before deploying that app. See [testing and verification](/docs/main/contribute/testing/) for the framework's own checks.
+
+## Validate microservice developer tooling
+
+The [public application tutorial](/docs/main/microservices-quickstart/) is the consumer path. Maintainer tests additionally exercise catalog safety, real child-process trees and an immutable contracts publication fixture on Linux/Windows. See the upstream [DX acceptance report](https://github.com/amkargar/gonex/blob/main/docs/microservices-dx/acceptance.md) for exact evidence and unverified independent onboarding.

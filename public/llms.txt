@@ -18,7 +18,10 @@ Development snapshot: main branch; no published release yet.
 - [HTTP API versions](https://amkargar.github.io/GoNex-website/docs/main/versioning/): Keep version-specific HTTP adapters and contracts separate while sharing business behavior in Gonex.
 - [Databases and migrations](https://amkargar.github.io/GoNex-website/docs/main/database/): Use optional GORM adapters with SQLite or PostgreSQL and explicit, checksum-verified SQL migrations.
 - [gRPC and contracts](https://amkargar.github.io/GoNex-website/docs/main/grpc/): Configure optional Gonex gRPC servers and clients, versioned Protobuf contracts, deadlines, TLS and mTLS.
-- [Microservices](https://amkargar.github.io/GoNex-website/docs/main/microservices/): Create independent Go services and versioned shared contracts with explicit typed client boundaries.
+- [Microservices](https://amkargar.github.io/GoNex-website/docs/main/microservices/): Develop independent Go services with explicit typed clients, local diagnostics and supervised processes.
+- [First microservice call](https://amkargar.github.io/GoNex-website/docs/main/microservices-quickstart/): Install Gonex, wire Orders to Identity explicitly and run local services with a single supervised command.
+- [Microservice diagnostics](https://amkargar.github.io/GoNex-website/docs/main/microservices-troubleshooting/): Resolve local ports, TLS, contract generation, unfinished mapping and supervised process failures.
+- [Microservice compatibility](https://amkargar.github.io/GoNex-website/docs/main/microservices-compatibility/): Understand catalog ownership, safe client generation, contract versions and independent Go module deployment.
 - [Deploy your application](https://amkargar.github.io/GoNex-website/docs/main/deployment/): Build and host a Gonex JSON API as a Go service, with explicit configuration, readiness and frontend hosting.
 - [Server output and logging](https://amkargar.github.io/GoNex-website/docs/main/logging/): Configure readable server startup URLs, correlated request logs, log levels and structured production JSON in a Gonex application.
 - [Metrics and tracing](https://amkargar.github.io/GoNex-website/docs/main/observability/): Correlate Gonex request logs and unary RPC traces, collect bounded latency histograms and opt in to Prometheus metrics.

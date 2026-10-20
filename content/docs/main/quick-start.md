@@ -10,7 +10,7 @@ group: "GETTING STARTED"
 ## Install the CLI
 
 ```sh
-go install github.com/amkargar/gonex/cmd/gonex@029a62093ad9
+go install github.com/amkargar/gonex/cmd/gonex@8124ffe157a0
 ```
 
 Use Go 1.27.2 and put Go's binary directory on PATH. See [installation](/docs/main/installation/) for details. This is a pinned development snapshot, not a stable release.
@@ -76,3 +76,7 @@ Edit these handwritten files inside your app. Keep `.gonex.json` and generated r
 The starter response demonstrates the structure; it is not generated CRUD. Continue with [Build a REST API](/docs/main/building-api/) for create/list/get users, JSON validation, conflict/not-found errors and OpenAPI. That guide starts from a separate generated project so its custom users module does not conflict with this starter.
 
 [Project structure](/docs/main/project-structure/) explains ownership; [CLI reference](/docs/main/cli/) covers optional database, versioned HTTP and gRPC commands.
+
+## Need independent services?
+
+The monolith remains the simplest default. Follow [First microservice call](/docs/main/microservices-quickstart/) when you need independent services; no framework clone is required.

@@ -18,7 +18,7 @@ A module is the unit of composition. It declares routes, resources and readiness
 Install the reviewed CLI snapshot and create your own API application:
 
 ```sh
-go install github.com/amkargar/gonex/cmd/gonex@029a62093ad9
+go install github.com/amkargar/gonex/cmd/gonex@8124ffe157a0
 gonex new shop --module example.com/acme/shop
 cd shop
 go mod tidy
