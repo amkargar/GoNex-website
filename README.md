@@ -40,9 +40,9 @@ The two dated journal entries are newly authored introductory/architecture draft
 
 ## Two documentation audiences
 
-The main **Build with Gonex** documentation lives at `/docs/<version>/`: adding the Go dependency, running an application, building HTML websites, connecting a frontend and deploying it. **Contribute to Gonex** lives at `/docs/<version>/contribute/`: framework setup, internals, tests, pull requests and maintenance.
+The main **Build with Gonex** documentation lives at `/docs/<version>/`: installing the CLI/library, generating applications and modules, developing JSON APIs, logging, connecting a frontend and deploying. **Contribute to Gonex** lives at `/docs/<version>/contribute/`: framework setup, internals, tests, pull requests and maintenance.
 
-The section picker, scoped search, breadcrumbs and previous/next navigation keep these paths distinct while using the same version registry. Existing consumer guide URLs are retained. Complete source examples are in `examples/quick-start/` and `examples/website/`; each is intended for a separate consumer Go module.
+The section picker, scoped search, breadcrumbs and previous/next navigation keep these paths distinct while using the same version registry. Existing consumer guide URLs are retained. Complete source examples are in `examples/api/`; a standalone consumer Go module.
 
 ## Edit content
 

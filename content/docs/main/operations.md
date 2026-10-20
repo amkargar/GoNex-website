@@ -8,6 +8,10 @@ section: "build"
 group: "SHIP YOUR APP"
 ---
 
+## Structured logs
+
+The application emits lifecycle and request logs by default. See [Server output and logging](/docs/main/logging/) for configuration, startup URLs and request IDs. Trace propagation and metrics below are independently opt-in.
+
 ## Health and readiness
 
 `/healthz` reports that HTTP is serving. `/readyz` returns 200 only while the application is running and its managed readiness resources and named checks succeed; otherwise it returns a redacted 503. `Registrar.Check(name, func(context.Context) error)` registers an application-specific check. Checks share a one-second budget and must honor context. The GORM resource pings its pool; the gRPC server checks its transport lifecycle. Check downstream RPC availability explicitly with `Clients.Ready`, rather than assuming a constructed client is connected.
@@ -28,6 +32,6 @@ The basic example enables tracing/counters and exposes its JSON metrics route on
 
 Shutdown first stops accepting HTTP traffic and drains active requests within the shutdown budget, then closes managed resources in reverse order. gRPC uses graceful stop with a forced stop when its context expires. Signal handling belongs to the executable. HTTP deadline middleware cancels request contexts; handlers and dependency calls must honor them. A handler that ignores context cannot be forcibly interrupted safely.
 
-## Verify operational behavior
+## Verify your application
 
-Run `go test ./tests ./grpc` for readiness, HTTP drain, asynchronous resource failure, RPC graceful/forced stop, stream deadlines, trace propagation and error-redaction regressions. See the [runnable service example](https://github.com/amkargar/gonex/blob/main/examples/microservices/README.md) for HTTP-to-gRPC requests and provider failure.
+Run `go tool gonex check` from your generated project and test your public endpoints. Probe `/healthz` and `/readyz` separately, verify dependency-failure behavior, and allow shutdown time in your process manager. Framework regression tests belong in [Contribute: testing](/docs/main/contribute/testing/).

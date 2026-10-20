@@ -15,16 +15,18 @@ A module is the unit of composition. It declares routes, resources and readiness
 
 ## A useful first five minutes
 
-Start in your own application module and add the reviewed framework snapshot:
+Install the reviewed CLI snapshot and create your own API application:
 
 ```sh
-mkdir my-site
-cd my-site
-go mod init example.com/my-site
-go get github.com/amkargar/gonex@670c8c5f427e
+go install github.com/amkargar/gonex/cmd/gonex@645a2f082d7d
+gonex new shop --module example.com/acme/shop
+cd shop
+go mod tidy
+go tool gonex create module users
+go tool gonex run
 ```
 
-Copy the complete program from [Your first application](/docs/main/quick-start/), run it, and request `http://127.0.0.1:8080/api/hello`. No database is required. Continue to [Build a website](/docs/main/building-websites/) for HTML templates and CSS. Framework setup and tests are in the separate [contributor guides](/docs/main/contribute/).
+Request `http://127.0.0.1:8080/users` for the starter JSON response. The terminal displays the bound server URL and correlated request logs. Continue with [Build a REST API](/docs/main/building-api/) for schemas, validation and create/list/get actions. Framework setup belongs in the separate [contributor guides](/docs/main/contribute/).
 
 ## Add the pieces you need
 

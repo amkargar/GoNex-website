@@ -36,7 +36,7 @@ Your HTTP handler translates requests into service calls. Your service accepts o
 | gRPC adapter | Versioned Protobuf mapping and remote calls |
 | Executable/module registration | Construction, configuration and resource composition |
 
-Use a modular monolith first when that fits your application. Independent services and gRPC are optional; there is no requirement to adopt them for a website or HTTP API.
+Use a modular monolith first when that fits your application. Independent services and gRPC are optional; there is no requirement to adopt them for an HTTP API.
 
 ## Let the application own resources
 

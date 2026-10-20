@@ -5,13 +5,13 @@
 Development snapshot: main branch; no published release yet.
 
 ## Documentation
-- [Build with Gonex](https://amkargar.github.io/GoNex-website/docs/main/): Install Gonex in your own Go project and learn to build websites, typed APIs and application modules.
-- [Install the package](https://amkargar.github.io/GoNex-website/docs/main/installation/): Add Gonex as a dependency to a new or existing Go module without cloning or changing the framework source.
-- [Your first application](https://amkargar.github.io/GoNex-website/docs/main/quick-start/): Create your own Go module, import Gonex, register a typed HTTP endpoint and run a working application.
-- [Build a website](https://amkargar.github.io/GoNex-website/docs/main/building-websites/): Build a complete Gonex website with server-rendered HTML templates, embedded CSS and a typed JSON API.
+- [Build APIs with Gonex](https://amkargar.github.io/GoNex-website/docs/main/): Install Gonex, generate projects and modules with its CLI, and develop typed JSON APIs with validation, OpenAPI and structured logs.
+- [Install Gonex and its CLI](https://amkargar.github.io/GoNex-website/docs/main/installation/): Install Gonex as a Go library and project-local development tool, then generate an API application without cloning the framework.
+- [Your first API project](https://amkargar.github.io/GoNex-website/docs/main/quick-start/): Create a Gonex project with the CLI, add an HTTP module, run the server and inspect JSON responses, logs and OpenAPI.
+- [Build a REST API](https://amkargar.github.io/GoNex-website/docs/main/building-api/): Build create, list and get user endpoints in a CLI-generated Gonex app, using schemas.go validation, explicit services and OpenAPI.
 - [Connect a frontend](https://amkargar.github.io/GoNex-website/docs/main/frontend/): Use Gonex as the backend for a Nuxt, Vue, React or Flutter frontend, with clear API URLs and deployment boundaries.
 - [Application architecture](https://amkargar.github.io/GoNex-website/docs/main/architecture/): Structure a Gonex application around plain Go business services, explicit modules and optional HTTP, database and gRPC adapters.
-- [Organize your project](https://amkargar.github.io/GoNex-website/docs/main/project-structure/): Organize a Gonex application into business modules, schemas.go HTTP adapters, configuration and a small executable.
+- [Organize your API project](https://amkargar.github.io/GoNex-website/docs/main/project-structure/): Develop inside a CLI-generated Gonex application with clear service, schema, handler and route responsibilities and protected registries.
 - [Modules and lifecycle](https://amkargar.github.io/GoNex-website/docs/main/modules/): Register explicit Go modules, share business services, and manage resources through startup and graceful shutdown.
 - [CLI reference](https://amkargar.github.io/GoNex-website/docs/main/cli/): Reference Gonex commands for safe project scaffolding, modules, API versions, gRPC generation and database migrations.
 - [HTTP and OpenAPI](https://amkargar.github.io/GoNex-website/docs/main/http/): Build typed HTTP endpoints with Gin adapters, request validation and OpenAPI 3.1 contracts in Gonex.
@@ -19,7 +19,8 @@ Development snapshot: main branch; no published release yet.
 - [Databases and migrations](https://amkargar.github.io/GoNex-website/docs/main/database/): Use optional GORM adapters with SQLite or PostgreSQL and explicit, checksum-verified SQL migrations.
 - [gRPC and contracts](https://amkargar.github.io/GoNex-website/docs/main/grpc/): Configure optional Gonex gRPC servers and clients, versioned Protobuf contracts, deadlines, TLS and mTLS.
 - [Microservices](https://amkargar.github.io/GoNex-website/docs/main/microservices/): Create independent Go services and versioned shared contracts with explicit typed client boundaries.
-- [Deploy your application](https://amkargar.github.io/GoNex-website/docs/main/deployment/): Build and host a Gonex-backed website or API as a Go service, with explicit configuration, readiness and frontend hosting.
+- [Deploy your application](https://amkargar.github.io/GoNex-website/docs/main/deployment/): Build and host a Gonex JSON API as a Go service, with explicit configuration, readiness and frontend hosting.
+- [Server output and logging](https://amkargar.github.io/GoNex-website/docs/main/logging/): Configure readable server startup URLs, correlated request logs, log levels and structured production JSON in a Gonex application.
 - [Operations and readiness](https://amkargar.github.io/GoNex-website/docs/main/operations/): Configure readiness, graceful shutdown, request metrics, resource ownership and trace propagation.
 - [Security configuration](https://amkargar.github.io/GoNex-website/docs/main/security/): Review Gonex request limits, authentication boundaries, CORS policy and secure transport configuration.
 - [Application API reference](https://amkargar.github.io/GoNex-website/docs/main/api-reference/): Reference Gonex construction, module registration, typed routing, lifecycle and resource APIs.

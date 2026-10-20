@@ -1,0 +1,14 @@
+{
+  "format": 1,
+  "module": "example.com/shop",
+  "frameworkVersion": "v0.0.0-20261020064127-645a2f082d7d",
+  "modules": [
+    {
+      "name": "users",
+      "transport": "none"
+    }
+  ],
+  "owned": {
+    "modules/registry_gen.go": "71433fcba949fa0a942f6fdffb478727344bfc9b3232699e49fb5d447f27a286"
+  }
+}

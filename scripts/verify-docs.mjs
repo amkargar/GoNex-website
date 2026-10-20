@@ -16,13 +16,16 @@ for (const p of docs) {
   assert(index.some(x => x.path === p.path && x.version === p.version && x.section === p.section), `Missing scoped search entry: ${p.path}`)
 }
 const examples = [
-  ['content/docs/main/quick-start.md', 'examples/quick-start/main.go', 'go'],
-  ['content/docs/main/building-websites.md', 'examples/website/main.go', 'go'],
-  ['content/docs/main/building-websites.md', 'examples/website/templates/index.html', 'html'],
-  ['content/docs/main/building-websites.md', 'examples/website/public/app.css', 'css']
+  ...['modules/users/service.go','modules/users/http/schemas.go','modules/users/http/handlers.go','modules/users/http/routes.go','modules/users/http/openapi.go','modules/users/module.go','modules/users/service_test.go'].map(file => ['content/docs/main/building-api.md', `examples/api/${file}`, 'go'])
 ]
 for (const [guide, file, lang] of examples) {
   const text = await readFile(guide, 'utf8'), code = (await readFile(file, 'utf8')).trimEnd()
   assert(text.includes('```' + lang + '\n' + code + '\n```'), `Guide/source example drift: ${file}`)
 }
-console.log(`PASS: two docs audiences, version indexes, ${docs.length} scoped search entries and four source-matched example blocks.`)
+console.log(`PASS: two docs audiences, version indexes, ${docs.length} scoped search entries and seven source-matched API example blocks.`)
+
+for (const p of docs.filter(p => p.section === 'build')) {
+  const source = await readFile(p.file, 'utf8')
+  assert(!source.includes('git clone '), `Consumer docs must not require a clone: ${p.path}`)
+  assert(!source.includes('html/template'), `Consumer docs must focus on APIs: ${p.path}`)
+}

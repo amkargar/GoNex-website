@@ -1,0 +1,30 @@
+name: Verify API consumer example
+on:
+  push:
+    branches: [main]
+    paths: ['examples/api/**', '.github/workflows/examples.yml']
+  pull_request:
+    paths: ['examples/api/**', '.github/workflows/examples.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GIN_MODE: release
+      GOWORK: 'off'
+    defaults:
+      run:
+        working-directory: examples/api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+        with:
+          go-version-file: examples/api/go.mod
+          cache-dependency-path: examples/api/go.sum
+      - run: go mod download
+      - run: go mod verify
+      - run: go tool gonex check
+      - run: go test -race ./...

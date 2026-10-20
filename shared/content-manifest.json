@@ -23,8 +23,8 @@
   },
   {
     "path": "/docs/main/",
-    "title": "Build with Gonex",
-    "description": "Install Gonex in your own Go project and learn to build websites, typed APIs and application modules.",
+    "title": "Build APIs with Gonex",
+    "description": "Install Gonex, generate projects and modules with its CLI, and develop typed JSON APIs with validation, OpenAPI and structured logs.",
     "type": "docs",
     "order": 0,
     "file": "content/docs/main/index.md",
@@ -34,8 +34,8 @@
   },
   {
     "path": "/docs/main/installation/",
-    "title": "Install the package",
-    "description": "Add Gonex as a dependency to a new or existing Go module without cloning or changing the framework source.",
+    "title": "Install Gonex and its CLI",
+    "description": "Install Gonex as a Go library and project-local development tool, then generate an API application without cloning the framework.",
     "type": "docs",
     "order": 10,
     "file": "content/docs/main/installation.md",
@@ -45,8 +45,8 @@
   },
   {
     "path": "/docs/main/quick-start/",
-    "title": "Your first application",
-    "description": "Create your own Go module, import Gonex, register a typed HTTP endpoint and run a working application.",
+    "title": "Your first API project",
+    "description": "Create a Gonex project with the CLI, add an HTTP module, run the server and inspect JSON responses, logs and OpenAPI.",
     "type": "docs",
     "order": 20,
     "file": "content/docs/main/quick-start.md",
@@ -55,15 +55,15 @@
     "group": "GETTING STARTED"
   },
   {
-    "path": "/docs/main/building-websites/",
-    "title": "Build a website",
-    "description": "Build a complete Gonex website with server-rendered HTML templates, embedded CSS and a typed JSON API.",
+    "path": "/docs/main/building-api/",
+    "title": "Build a REST API",
+    "description": "Build create, list and get user endpoints in a CLI-generated Gonex app, using schemas.go validation, explicit services and OpenAPI.",
     "type": "docs",
     "order": 30,
-    "file": "content/docs/main/building-websites.md",
+    "file": "content/docs/main/building-api.md",
     "version": "main",
     "section": "build",
-    "group": "WEBSITES & FRONTENDS"
+    "group": "GETTING STARTED"
   },
   {
     "path": "/docs/main/frontend/",
@@ -74,7 +74,7 @@
     "file": "content/docs/main/frontend.md",
     "version": "main",
     "section": "build",
-    "group": "WEBSITES & FRONTENDS"
+    "group": "APPLICATION DESIGN"
   },
   {
     "path": "/docs/main/architecture/",
@@ -89,8 +89,8 @@
   },
   {
     "path": "/docs/main/project-structure/",
-    "title": "Organize your project",
-    "description": "Organize a Gonex application into business modules, schemas.go HTTP adapters, configuration and a small executable.",
+    "title": "Organize your API project",
+    "description": "Develop inside a CLI-generated Gonex application with clear service, schema, handler and route responsibilities and protected registries.",
     "type": "docs",
     "order": 55,
     "file": "content/docs/main/project-structure.md",
@@ -178,10 +178,21 @@
   {
     "path": "/docs/main/deployment/",
     "title": "Deploy your application",
-    "description": "Build and host a Gonex-backed website or API as a Go service, with explicit configuration, readiness and frontend hosting.",
+    "description": "Build and host a Gonex JSON API as a Go service, with explicit configuration, readiness and frontend hosting.",
     "type": "docs",
     "order": 140,
     "file": "content/docs/main/deployment.md",
+    "version": "main",
+    "section": "build",
+    "group": "SHIP YOUR APP"
+  },
+  {
+    "path": "/docs/main/logging/",
+    "title": "Server output and logging",
+    "description": "Configure readable server startup URLs, correlated request logs, log levels and structured production JSON in a Gonex application.",
+    "type": "docs",
+    "order": 145,
+    "file": "content/docs/main/logging.md",
     "version": "main",
     "section": "build",
     "group": "SHIP YOUR APP"

@@ -1,56 +1,63 @@
 ---
-title: "Organize your project"
-description: "Organize a Gonex application into business modules, schemas.go HTTP adapters, configuration and a small executable."
+title: "Organize your API project"
+description: "Develop inside a CLI-generated Gonex application with clear service, schema, handler and route responsibilities and protected registries."
 order: 55
 version: "main"
 section: "build"
 group: "APPLICATION DESIGN"
 ---
 
-## A small application
+## The generated layout
 
-The [quick start](/docs/main/quick-start/) uses a single file so you can see the complete lifecycle. You can keep that structure while the application is small.
-
-## A growing application
-
-As business capabilities grow, a typical application looks like this:
+Start with `gonex new shop --module example.com/acme/shop`, then `go mod tidy` and `go tool gonex create module users` inside shop:
 
 ```text
-my-site/
-├── main.go
+shop/
 ├── go.mod
 ├── go.sum
+├── main.go
+├── .gonex.json
 ├── config/
 │   └── config.go
-├── modules/
-│   ├── users/
-│   │   ├── module.go
-│   │   ├── service.go
-│   │   └── http/
-│   │       ├── handlers.go
-│   │       ├── schemas.go
-│   │       ├── routes.go
-│   │       └── openapi.go
-│   └── catalog/
-├── templates/
-└── public/
+└── modules/
+    ├── registry_gen.go
+    └── users/
+        ├── module.go
+        ├── service.go
+        ├── service_test.go
+        ├── http_registry_gen.go
+        └── http/
+            ├── schemas.go
+            ├── handlers.go
+            ├── routes.go
+            └── openapi.go
 ```
 
-Templates and public files are only needed if the Go application serves HTML/assets. A separate frontend may live in its own directory or repository.
+`go.mod` tracks Gonex as the runtime library and CLI development tool. The server has no application HTML/CSS scaffold. HTTP API versioning, database files and gRPC adapters appear only when requested.
 
-## File responsibilities
+## Files you edit
 
-- `main.go`: load configuration, construct Gonex, register modules and run with a cancellation context.
-- `module.go`: construct/share the module's service, then register its adapters and managed resources.
-- `service.go`: business behavior, plain Go values and small consumer-owned interfaces.
-- `schemas.go`: HTTP request and response DTOs and validation tags.
+- `main.go`: application construction, explicit modules and signal handling.
+- `config/config.go`: environment/configuration mapping, logging and exposure settings.
+- `module.go`: service construction and adapter wiring.
+- `service.go`: plain Go business behavior and local interfaces.
+- `schemas.go`: HTTP DTOs and validation tags.
 - `handlers.go`: request-to-service calls and response mapping.
-- `routes.go` / `openapi.go`: typed endpoint registration and public contract metadata.
+- `routes.go` and `openapi.go`: typed routes and contract descriptions.
+- Tests: verify your application's domain and API behavior.
 
-A database adapter and models can be added when you need persistence. Keep migration execution explicit. See [databases](/docs/main/database/).
+These are application files owned by you. The CLI does not continuously regenerate your service logic. A starter module exposes a message endpoint; implementing resource actions is deliberate development, as shown in [Build a REST API](/docs/main/building-api/).
 
-## Manual composition or CLI scaffolding
+## Tool-owned files
 
-You can create these files yourself and use the public registration APIs. The [CLI](/docs/main/cli/) generates the supported project layout and ownership metadata. Tool-owned registries are hash-checked, so keep handwritten business changes in the files designated for application code.
+Keep `.gonex.json`, `modules/registry_gen.go`, and generated adapter registries under tool ownership. Generators hash-check these files and reject conflicting manual edits. Use commands to add modules, enable transports and create versions. When changing a handwritten adapter's interface, update its module wiring deliberately rather than breaking a generated registry's assumptions.
 
-Do not copy the framework's internal package tree into your app. Gonex remains a dependency in your `go.mod`; [contributor documentation](/docs/main/contribute/) is for changes to that dependency itself.
+## Keep developing
+
+```sh
+go tool gonex create module products
+go tool gonex check
+go tool gonex run
+```
+
+A separate frontend consumes the API over HTTP. Optional database adapters and models stay at the module boundary; migration execution remains explicit.

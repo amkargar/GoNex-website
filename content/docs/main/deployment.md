@@ -1,6 +1,6 @@
 ---
 title: "Deploy your application"
-description: "Build and host a Gonex-backed website or API as a Go service, with explicit configuration, readiness and frontend hosting."
+description: "Build and host a Gonex JSON API as a Go service, with explicit configuration, readiness and frontend hosting."
 order: 140
 version: "main"
 section: "build"
@@ -11,7 +11,7 @@ group: "SHIP YOUR APP"
 
 Gonex is a Go backend. Its compiled executable must run on a server, container platform or other host that supports a long-running Go process. GitHub Pages serves static files and cannot execute that backend.
 
-If you use a static Nuxt/Vue frontend, you can host it on Pages while the Gonex API runs elsewhere. A Go-rendered HTML website runs with its Gonex server. See [frontend integration](/docs/main/frontend/) for the boundary.
+If you use a static Nuxt/Vue frontend, you can host it on Pages while the Gonex API runs elsewhere. See [frontend integration](/docs/main/frontend/) for the boundary.
 
 ## Build the application
 
@@ -20,20 +20,20 @@ From your application module:
 ```sh
 go mod tidy
 go test ./...
-go build -o my-site .
+go build -o shop .
 ```
 
-In the website tutorial, templates and assets are embedded, so the executable includes them. Other layouts may require you to deploy non-embedded files beside the binary.
+Deploy the compiled API binary and its explicit runtime configuration. Frontend assets are built and hosted separately.
 
 ## Configure the listening address
 
 The tutorial programs read `HTTP_ADDRESS` and pass it to `config.Config`. For a platform that expects a listener on all interfaces, configure the address in the process environment before starting the application:
 
 ```sh
-HTTP_ADDRESS=0.0.0.0:8080 ./my-site
+GONEX_ENV=production HTTP_ADDRESS=0.0.0.0:8080 ./shop
 ```
 
-This is POSIX shell syntax. On PowerShell, set `$env:HTTP_ADDRESS = '0.0.0.0:8080'`, then start `./my-site.exe`. Bind only to interfaces appropriate for your deployment; use `127.0.0.1:8080` when a local reverse proxy should be the only entry point.
+This is POSIX shell syntax. On PowerShell, set `$env:GONEX_ENV = 'production'` and `$env:HTTP_ADDRESS = '0.0.0.0:8080'`, then start `./shop.exe`. Bind only to interfaces appropriate for your deployment; use `127.0.0.1:8080` when a local reverse proxy should be the only entry point.
 
 Gonex does not automatically load `.env` files. Your executable or process manager owns environment/configuration loading. The default `config.Config{}` listener is loopback-only.
 
@@ -42,6 +42,10 @@ Gonex does not automatically load `.env` files. Your executable or process manag
 Terminate HTTPS with your platform or reverse proxy. For a separate frontend on the same origin, serve the frontend at `/` and forward `/api/` to the Gonex listener while preserving its `/api` prefix. For a different-origin frontend, configure the backend's allowed CORS origin and the frontend's public API URL.
 
 Decide whether `/openapi.json` should be public. Set `DisableOpenAPI` in the application configuration when it should not be exposed. For generated CLI applications, use their documented `GONEX_DISABLE_OPENAPI` option.
+
+## Production logs
+
+Set `GONEX_ENV=production` in the generated application to select JSON logs by default. Collect stderr through your platform; configure level/format using the [logging guide](/docs/main/logging/). The localhost startup URL is a local convenience, not your public HTTPS origin.
 
 ## Health, readiness and shutdown
 

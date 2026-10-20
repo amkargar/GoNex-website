@@ -1,5 +1,13 @@
 {
   "defaultVersion": "main",
   "github": "https://github.com/amkargar/gonex",
-  "versions": [{ "id": "main", "label": "main · Development", "short": "Development", "released": false, "sourceRef": "670c8c5f427ecd44e146836f7d45b2e3e0abd3ae" }]
+  "versions": [
+    {
+      "id": "main",
+      "label": "main \u00b7 Development",
+      "short": "Development",
+      "released": false,
+      "sourceRef": "645a2f082d7db7fdd10309572966256c343e42b5"
+    }
+  ]
 }

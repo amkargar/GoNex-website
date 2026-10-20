@@ -9,7 +9,7 @@ group: "START CONTRIBUTING"
 
 This section is for developing **Gonex itself**: its application lifecycle, typed transports, generators, integrations and release tooling.
 
-If you want to build your own website or API, start with **[Build with Gonex](/docs/main/)**. Installing the package in an application does not require a fork of the framework.
+If you want to build your own API application, start with **[Build with Gonex](/docs/main/)**. Installing the package in an application does not require a fork of the framework.
 
 ## Contributor path
 

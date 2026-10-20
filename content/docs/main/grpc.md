@@ -36,14 +36,14 @@ Contracts are a separate Go module at contracts/. All packages and Go paths are 
 
 schema.binpb is the generated descriptor set. baseline.binpb is the explicitly frozen initial release contract. `gonex grpc check` rejects removed/changed files, messages, fields, enum values and RPC signatures, allowing additions. Generation enforces this baseline too. This conservative checker may require a new major for option-only changes; CI also runs Buf FILE compatibility against the same descriptor baseline. Update baselines only during a reviewed release, never to suppress a failed compatibility gate. buf.yaml and buf.gen.yaml support a standard external Buf toolchain as well.
 
-## Run the TLS integration fixture
+## Verify your application's contracts
 
-`integration/rpc` is an isolated executable-contract test module with explicit relative local replacements for this checkout. Run `go -C contracts test ./...` and `go -C integration/rpc test ./...`. Its Identity provider and Orders consumer use generated GetUser messages over real TLS, with plain Go business interfaces. These test-only replacements are not production template dependencies.
+From your generated app or workspace, use `go tool gonex grpc generate`, `go tool gonex grpc check` and `go tool gonex check`. Test your own provider/consumer mapping and failure behavior. Framework TLS integration fixtures are documented separately in [Contribute: testing](/docs/main/contribute/testing/).
 
 ## Recovery and observability
 
 Unary and stream recovery returns redacted Internal errors. `grpc.ServerTLS` and `grpc.ClientTLS` load verified certificate configurations with redacted file errors. The optional observability/grpc unary interceptors propagate traceparent and collect fixed-method metrics; see [operations](/docs/main/operations/). Application readiness can check managed server lifecycle and explicitly registered downstream client connectivity.
 
-## Run Buf checks
+## Additional Buf checks
 
-Install the pinned official Buf binary with `go run ./internal/tooling/bufinstall .tools`; it verifies the downloaded release checksum. Run `.tools/buf lint contracts/proto` and `.tools/buf breaking contracts/proto --against contracts/baseline.binpb` (use buf.exe on Windows). CI runs these in addition to internal checks. The [runnable Identity/Orders example](https://github.com/amkargar/gonex/blob/main/examples/microservices/README.md) includes HTTP-to-gRPC mapping and TLS configuration.
+Your contracts module includes buf.yaml and buf.gen.yaml for an external Buf workflow. Add Buf lint and compatibility checks to your application's CI when needed. Framework maintainers' pinned tool installer and release gates belong in [contributor testing](/docs/main/contribute/testing/).
