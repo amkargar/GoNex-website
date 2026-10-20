@@ -49,3 +49,36 @@ html{scroll-behavior:smooth;scroll-padding-top:105px}body{margin:0;background:va
 .dark .prose-code pre {
   color-scheme: dark;
 }
+
+/* Keep Quick Start's flex/grid children within the viewport on narrow screens.
+   Long CLI commands scroll within their own code panels, not the page. */
+.quick-section,
+.quick-steps,
+.quick-steps .step,
+.quick-steps .step-content,
+.quick-steps .code-block {
+  min-width: 0;
+  max-width: 100%;
+}
+.quick-steps .code-block pre {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+.quick-steps .step-note,
+.quick-steps .json-response {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.quick-steps .json-response code {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 600px) {
+  .quick-section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .quick-steps .step-content {
+    flex: 1 1 0%;
+  }
+}
