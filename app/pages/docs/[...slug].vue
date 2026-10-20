@@ -36,7 +36,7 @@ const headings = current.body?.toc?.links || []
 <template>
   <div class="docs-shell wrap" :data-docs-section="section">
     <div class="docs-mobile-bar"><UButton color="neutral" variant="outline" icon="i-lucide-panel-left" :aria-expanded="menu" aria-controls="docs-sidebar" @click="menu = !menu">{{ sectionTitle }}</UButton><span>{{ activeVersion.short }}</span></div>
-    <aside id="docs-sidebar" class="docs-sidebar" :class="{ 'mobile-open': menu }">
+    <aside id="docs-sidebar" class="docs-sidebar" tabindex="0" aria-label="Documentation navigation" :class="{ 'mobile-open': menu }">
       <label for="docs-version" class="sidebar-title">DOCUMENTATION</label>
       <select id="docs-version" v-model="selectedVersion" class="version-select" @change="changeVersion"><option v-for="v in versions" :key="v.id" :value="v.id">{{ v.label }}</option></select>
       <nav class="docs-section-picker" aria-label="Documentation sections">
@@ -56,6 +56,6 @@ const headings = current.body?.toc?.links || []
       <div class="doc-source"><a :href="`${websiteGithub}/edit/main/${currentEntry.file}`"><UIcon name="i-lucide-file-code" /> Edit this guide ↗</a><a v-if="current.source" :href="`${github}/blob/${sourceRef}/docs/${current.source}`">Framework reference ↗</a><span>Source snapshot {{ sourceRef.slice(0, 7) }}</span></div>
       <nav class="doc-pagination" :aria-label="`${sectionTitle} pages`"><NuxtLink v-if="previous" :to="previous.path"><span>← Previous</span><strong>{{ previous.title }}</strong></NuxtLink><NuxtLink v-if="next" :to="next.path"><span>Next →</span><strong>{{ next.title }}</strong></NuxtLink></nav>
     </article>
-    <aside class="docs-toc"><span>ON THIS PAGE</span><nav aria-label="Table of contents"><a v-for="heading in headings" :key="heading.id" :href="`#${heading.id}`">{{ heading.text }}</a></nav><div class="toc-help"><strong>Something unclear?</strong><a :href="`${github}/issues/new`">Open an issue ↗</a><a :href="`${websiteGithub}/edit/main/${currentEntry.file}`">Improve this page ↗</a></div></aside>
+    <aside class="docs-toc" tabindex="0" aria-label="On this page"><span>ON THIS PAGE</span><nav aria-label="Table of contents"><a v-for="heading in headings" :key="heading.id" :href="`#${heading.id}`">{{ heading.text }}</a></nav><div class="toc-help"><strong>Something unclear?</strong><a :href="`${github}/issues/new`">Open an issue ↗</a><a :href="`${websiteGithub}/edit/main/${currentEntry.file}`">Improve this page ↗</a></div></aside>
   </div>
 </template>
